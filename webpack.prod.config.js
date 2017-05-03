@@ -40,9 +40,9 @@ module.exports = {
                 postcss: [
                     autoprefixer({ browsers: ['last 2 versions'] })
                 ],
-                sassLoader: {
-                    data: `@import "${__dirname}/src/styles/config/_variables.scss";`
-                }
+                // sassLoader: {
+                //     data: `@import "${__dirname}/src/styles/config/_variables.scss";`
+                // }
             }
         }),
         new webpack.LoaderOptionsPlugin({
