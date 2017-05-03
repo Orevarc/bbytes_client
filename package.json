@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack --progress --display-error-details --config webpack.dev.config.js --watch",
     "heroku-postbuild": "npm run build",
-    "build": "webpack --config ./webpack.prod.config.js --progress --colors",
+    "build": "webpack --config ./webpack.prod.config.js --progress --display-error-details --colors",
     "start": "node server.js"
   },
   "author": "Ivan Carballo",
