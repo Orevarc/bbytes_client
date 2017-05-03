@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { authLogoutAndRedirect } from './actions/auth';
-// import './styles/main.scss';
+import './styles/main.scss';
 
 import { GLOBAL_APP_NAME, GLOBAL_DESCRIP } from './constants'
 
