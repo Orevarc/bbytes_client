@@ -54,7 +54,8 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, '../web-client/index.html'),
+            // template: path.join(__dirname, '../web-client/index.html'),
+            template: 'app/web-client/index.html',
             hash: true,
             filename: 'index.html',
             inject: 'body'
