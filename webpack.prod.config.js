@@ -4,6 +4,8 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const TARGET = process.env.npm_lifecycle_event;
+
 module.exports = {
   devtool: 'source-map',
   entry: [
