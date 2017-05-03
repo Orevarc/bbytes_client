@@ -59,7 +59,7 @@ export function slFetchIngredients(urls) {
                 "X-CSRFToken": getCookie("csrftoken"),
                 "Accept": "application/json",
                 'Access-Control-Allow-Origin':'*',
-                "Content-Type": "application/json"
+                "Content-Type": "application/x-www-form-urlencoded"
             }
         })
             .then(checkHttpStatus)
