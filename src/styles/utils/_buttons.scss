@@ -1,0 +1,88 @@
+.btn-outline {
+
+	background: none;
+	//border-width:  2px;
+	border-color: transparent;
+	font-weight: 400;
+
+	&:hover {
+		background: none;
+		border-color: transparent;
+	}
+
+	&.btn-white {
+		box-shadow: 0 0 0 2px rgba(255,255,255, 0.8) inset;
+		color: rgba(255,255,255, 0.8);
+
+		&:hover {
+			box-shadow: 0 0 0 2px rgba(255,255,255, 1) inset;
+			color: rgba(255,255,255, 1);
+		}
+
+	}
+
+	&.btn-primary {
+
+		box-shadow: 0 0 0 2px darken($bb-primary, 10%) inset;
+		color: darken($bb-primary, 10%);
+
+		&:hover {
+			box-shadow: 0 0 0 2px $bb-primary inset;
+			color: $bb-primary;
+		}
+
+	}
+
+	&.btn-success {
+
+		box-shadow: 0 0 0 2px darken($bb-success, 10%) inset;
+		color: darken($bb-success, 10%);
+
+		&:hover {
+			box-shadow: 0 0 0 2px $bb-success inset;
+			color: $bb-success;
+		}
+
+	}
+
+	&.btn-info {
+
+		box-shadow: 0 0 0 2px darken($bb-info, 10%) inset;
+		color: darken($bb-info, 10%);
+
+		&:hover {
+			box-shadow: 0 0 0 2px $bb-info inset;
+			color: $bb-info;
+		}
+
+	}
+
+	&.btn-warning {
+
+		box-shadow: 0 0 0 2px darken($bb-warning, 10%) inset;
+		color: darken($bb-warning, 10%);
+
+		&:hover {
+			box-shadow: 0 0 0 2px $bb-warning inset;
+			color: $bb-warning;
+		}
+
+	}
+
+	&.btn-danger {
+
+		box-shadow: 0 0 0 2px darken($bb-danger, 10%) inset;
+		color: darken($bb-danger, 10%);
+
+		&:hover {
+			box-shadow: 0 0 0 2px $bb-danger inset;
+			color: $bb-danger;
+		}
+
+	}
+
+}
+
+.btn-rounded {
+	border-radius: 50px;
+}
