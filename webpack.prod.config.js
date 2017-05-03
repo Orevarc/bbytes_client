@@ -40,9 +40,9 @@ module.exports = {
                 postcss: [
                     autoprefixer({ browsers: ['last 2 versions'] })
                 ],
-                // sassLoader: {
-                //     data: `@import "${__dirname}/src/styles/config/_variables.scss";`
-                // }
+                sassLoader: {
+                    data: `@import "${__dirname}/src/styles/config/_variables.scss";`
+                }
             }
         }),
         new webpack.LoaderOptionsPlugin({
@@ -127,15 +127,15 @@ module.exports = {
                     'postcss-loader'
                 ]
             }, 
-            // {
-            //     test: /\.scss$/,
-            //     use: [
-            //         // extractCSS.extract('style'),
-            //         'css-loader?localIdentName=[path][name]--[local]',
-            //         'postcss-loader',
-            //         'sass-loader',
-            //     ]
-            // }
+            {
+                test: /\.scss$/,
+                use: [
+                    // extractCSS.extract('style'),
+                    'css-loader?localIdentName=[path][name]--[local]',
+                    'postcss-loader',
+                    'sass-loader',
+                ]
+            }
         ]
     }
 };
