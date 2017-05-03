@@ -52,12 +52,9 @@ export function slFetchIngredients(urls) {
         };
         return fetch(`${SERVER_URL}/get_ingredients/`, {
             method: 'post',
-            credentials: 'include',
             mode: 'cors',
             body: JSON.stringify(myData),
             headers: {
-                "X-CSRFToken": getCookie("csrftoken"),
-                "Accept": "application/json",
                 'Access-Control-Allow-Origin':'*',
                 "Content-Type": "application/x-www-form-urlencoded"
             }
