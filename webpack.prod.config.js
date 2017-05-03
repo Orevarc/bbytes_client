@@ -127,15 +127,15 @@ module.exports = {
                     'postcss-loader'
                 ]
             }, 
-            {
-                test: /\.scss$/,
-                use: [
-                    // extractCSS.extract('style'),
-                    'css-loader?localIdentName=[path][name]--[local]',
-                    'postcss-loader',
-                    'sass-loader',
-                ]
-            }
+            // {
+            //     test: /\.scss$/,
+            //     use: [
+            //         // extractCSS.extract('style'),
+            //         'css-loader?localIdentName=[path][name]--[local]',
+            //         'postcss-loader',
+            //         'sass-loader',
+            //     ]
+            // }
         ]
     }
 };
