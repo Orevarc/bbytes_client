@@ -52,11 +52,10 @@ export function slFetchIngredients(urls) {
         };
         return fetch(`${SERVER_URL}/get_ingredients/`, {
             method: 'post',
-            mode: 'no-cors',
+            mode: 'cors',
             body: JSON.stringify(myData),
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin':'*',
             }
         })
             .then(checkHttpStatus)
