@@ -56,6 +56,7 @@ export function slFetchIngredients(urls) {
             body: JSON.stringify(myData),
             headers: {
                 'Access-Control-Allow-Origin':'*',
+                "Content-Type": "application/json"
             }
         })
             .then(checkHttpStatus)
