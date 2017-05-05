@@ -7,6 +7,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { authLogoutAndRedirect } from './actions/auth';
 import './styles/main.scss';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import { GLOBAL_APP_NAME, GLOBAL_DESCRIP } from './constants'
 
@@ -60,7 +61,7 @@ class App extends React.Component {
                           <a onClick={this.goToIndex}>
                             <h2 className="brand">{GLOBAL_APP_NAME}<br /><small>{GLOBAL_DESCRIP}</small></h2> 
                             </a>
-                            <img src="http://rawgit.com/start-react/ani-theme/master/build/c4584a3be5e75b1595685a1798c50743.png" className="user-avatar" />
+                            <img src="https://practicegreenhealth.org/sites/default/files/upload-images/food.png" height="125" width="125" className="user-avatar" />
                         </div> 
 
                         <ul className="nav nav-sidebar"> 

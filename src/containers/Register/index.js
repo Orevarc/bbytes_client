@@ -16,10 +16,22 @@ const Register = t.struct({
 
 const RegisterFormOptions = {
     auto: 'placeholders',
-    help: <i>Hint: a@a.com / qw</i>,
+    // help: <i>Hint: a@a.com / qw</i>,
     fields: {
         password: {
-            type: 'password'
+            type: 'password',
+            attrs: {
+                className: 'input-underline input-lg',
+                placeholder: 'Password',
+                autocomplete: 'off'
+            }
+        },
+        email: {
+            attrs: {
+                className: 'input-underline input-lg',
+                placeholder: 'Email',
+                autocomplete: 'off'
+            }
         }
     }
 };

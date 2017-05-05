@@ -89,7 +89,7 @@ class ShoppingListView extends React.Component {
 
         return (
             <div className="container">
-                <h1 className="text-center">BBytes SL</h1>
+                <h1 className="text-left">BBytes SL</h1>
                 <div className="jumbotron margin-top-medium">
                     {statusText}
                     <form onSubmit={this.fetchIngredients}>
@@ -101,7 +101,7 @@ class ShoppingListView extends React.Component {
                         />
                         <button disabled={this.props.isFetching}
                                 type="submit"
-                                className="btn btn-primary btn-lg btn-outline btn-rounded"
+                                className="btn-lg btn-outline btn-rounded"
                         >
                             Get Ingredients
                         </button>

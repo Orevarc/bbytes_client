@@ -28,6 +28,7 @@
     "babel-preset-es2015-loose": "8.0.0",
     "babel-preset-react": "6.16.0",
     "babel-preset-stage-1": "6.16.0",
+    "bootstrap": "^3.3.5",
     "css-loader": "^0.23.1",
     "clean-webpack-plugin": "0.1.14",
     "es6-promise": "4.0.5",
@@ -52,6 +53,7 @@
     "sass-loader": "4.1.0",
     "style-loader": "^0.13.1",
     "tcomb-form": "0.9.10",
+    "url-loader": "0.5.7",
     "webpack": "2.2.0-rc.1",
     "whatwg-fetch": "^0.11.0"
   }

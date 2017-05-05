@@ -10,7 +10,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const TARGET = process.env.npm_lifecycle_event;
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'source-map',
   entry: [
     'webpack-hot-middleware/client',
     './src/main'
@@ -180,18 +180,13 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    // extractCSS.extract('style'),
-                    'css-loader?localIdentName=[path][name]--[local]',
-                    'postcss-loader'
-                ]
+                use: ['style-loader', 'css-loader'],
             }, {
                 test: /\.scss$/,
                 use: [
-                    // extractCSS.extract('style'),
-                    'css-loader?localIdentName=[path][name]--[local]',
-                    'postcss-loader',
-                    'sass-loader',
+                  'style-loader',
+                  'css-loader',
+                  'sass-loader',
                 ]
             }
         ]

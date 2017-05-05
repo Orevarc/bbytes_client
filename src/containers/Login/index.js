@@ -102,7 +102,7 @@ class LoginView extends React.Component {
         }
 
         return (
-            <div className="login-page">
+            <div className="container login">
                 <h1 className="text-center">Login</h1>
                 <div className="login-container margin-top-medium">
                     {statusText}
@@ -115,7 +115,7 @@ class LoginView extends React.Component {
                         />
                         <button disabled={this.props.isAuthenticating}
                                 type="submit"
-                                className="btn btn-default btn-block"
+                                className="btn-lg btn-outline btn-rounded btn-block"
                         >
                             Submit
                         </button>
