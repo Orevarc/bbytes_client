@@ -48,6 +48,7 @@ class ShoppingListView extends React.Component {
             formValues: {
                 recipeUrls: ''
             },
+            inputtingRecipes: true,
         };
     }
 
