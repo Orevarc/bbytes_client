@@ -7,12 +7,10 @@ var app = express();
 var publicPath = path.join(__dirname, 'public');
 var imagesPath = path.join(__dirname, 'images');
 var indexPath = path.join(__dirname, 'index.html');
+console.log(indexPath);
 
 app.use('/public', express.static(publicPath));
 app.use('/images', express.static(imagesPath));
-app.get('/', function (request, response) {
-  response.sendFile(indexPath);
-});
 
 if (process.env.NODE_ENV !== 'production') {
   var webpack = require('webpack');
@@ -24,8 +22,14 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackHotMiddleware(compiler));
   app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
-    publicPath: config.output.publicPath
+    publicPath: config.output.publicPath,
+    hot: true,
+    stats: true,
+    historyApiFallback: true
   }));
 }
+app.get('*', function (request, response) {
+  response.sendFile(indexPath);
+});
 
 app.listen(port, () => console.log('Server running at port:' + port));

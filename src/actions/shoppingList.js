@@ -29,7 +29,7 @@ export function slReceiveIngredientsFailure(statusCode, errors) {
 export function slFetchIngredientsRequest() {
     return {
         type: SL_FETCH_INGREDIENTS_REQUEST,
-        payload: {}
+        payload: ''
     };
 }
 
@@ -61,9 +61,10 @@ export function slFetchIngredients(urls) {
             .then(checkHttpStatus)
             .then(parseJSON)
             .then((response) => {
-                dispatch(dataReceiveProtectedData(response.data));
+                dispatch(slReceiveIngredientsSuccess(response.shopping_list));
             })
             .catch((error) => {
+                console.log(error)
                 if (error && typeof error.response !== 'undefined' && error.response.status === 401) {
                     // Invalid authentication credentials
                     return error.response.json().then((data) => {

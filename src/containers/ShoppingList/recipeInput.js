@@ -67,20 +67,22 @@ class RecipeInput extends React.Component {
     };
 
     render() {
-      <form onSubmit={this.fetchIngredients}>
-          <Form ref={(ref) => { this.recipeInputForm = ref; }}
-                type={Recipes}
-                options={RecipeFormOptions}
-                value={this.state.formValues}
-                onChange={this.onFormChange}
-          />
-          <button disabled={this.props.isFetching}
-                  type="submit"
-                  className="btn-lg btn-outline btn-rounded"
-          >
-              Get Ingredients
-          </button>
-      </form>
+      return (
+        <form onSubmit={this.fetchIngredients}>
+            <Form ref={(ref) => { this.recipeInputForm = ref; }}
+                  type={Recipes}
+                  options={RecipeFormOptions}
+                  value={this.state.formValues}
+                  onChange={this.onFormChange}
+            />
+            <button disabled={this.props.isFetching}
+                    type="submit"
+                    className="btn-lg btn-outline btn-rounded"
+            >
+                Get Ingredients
+            </button>
+        </form>
+      )
     }
 }
 
@@ -98,5 +100,5 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShoppingListView);
-export { ShoppingListView as ShoppingListViewNotConnected };
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeInput);
+export { RecipeInput as RecipeInputNotConnected };

@@ -5,9 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const extractCSS = new ExtractTextPlugin('styles/[name].css');
 
-const TARGET = process.env.npm_lifecycle_event;
+const TARGET = process.env.NODE_ENV;
 
 module.exports = {
   devtool: 'source-map',
@@ -20,74 +19,7 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/public/'
   },
-  // plugins: [
-  //   new webpack.HotModuleReplacementPlugin(),
-  //   new webpack.ProvidePlugin({
-  //     'Promise': 'exports?global.Promise!es6-promise',
-  //     'fetch': 'exports?self.fetch!whatwg-fetch'
-  //   }),
-  //   new webpack.DefinePlugin({
-  //     API_BASE_URL: JSON.stringify("http://localhost:8000/"),
-  //     GA_TRACKING_CODE: null, // This will disable analytics during dev
-  //   }),
-  //   new webpack.LoaderOptionsPlugin({
-  //       test: /\.scss$/,
-  //       options: {
-  //           postcss: [
-  //               autoprefixer({ browsers: ['last 2 versions'] })
-  //           ],
-  //           sassLoader: {
-  //               data: `@import "${__dirname}/../src/static/styles/config/_variables.scss";`
-  //           }
-  //       }
-  //   }),
-  // ],
-  // module: {
-  //   loaders: [
-  //     {
-  //       test: /\.js$/,
-  //       loaders: ['react-hot-loader', 'babel-loader'],
-  //       include: path.join(__dirname, 'src')
-  //     },
-  //     {
-  //       test: /\.css$/,
-  //       loader: "style-loader!css-loader"
-  //     }
-  //   ],
-  //   rules: [
-  //     {
-  //         test: /\.jsx?$/,         // Match both .js and .jsx files
-  //         exclude: /node_modules/,
-  //         loader: "babel-loader",
-  //         query: {
-  //             presets:['react', 'es2015', 'stage-1']
-  //         }
-  //     },
-  //     {
-  //         test: /\.css$/,
-  //         use: [
-  //             extractCSS.extract('style'),
-  //             'css-loader?localIdentName=[path][name]--[local]',
-  //             'postcss-loader'
-  //         ]
-  //     }, {
-  //         test: /\.scss$/,
-  //         use: [
-  //             extractCSS.extract('style'),
-  //             'css-loader?localIdentName=[path][name]--[local]',
-  //             'postcss-loader',
-  //             'sass-loader',
-  //         ]
-  //     }
-  //   ],
-  // }
   plugins: [
-        // extract all common modules to vendor so we can load multiple apps in one page
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor',
-        //     filename: 'vendor.[hash].js'
-        // }),
-        // extractCSS,
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             children: true,
@@ -115,7 +47,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '../bbytes_client/index.html'),
-            hash: true,
+            // hash: true,
             filename: 'index.html',
             inject: 'body'
         }),
@@ -139,7 +71,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,         // Match both .js and .jsx files
+                test: /\.jsx?$/,         // Match both .js and .jsx fles
                 exclude: /node_modules/,
                 loader: "babel-loader",
                 query: {

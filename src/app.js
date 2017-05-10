@@ -15,7 +15,8 @@ class App extends React.Component {
 
     static propTypes = {
         isAuthenticated: React.PropTypes.bool.isRequired,
-        children: React.PropTypes.shape().isRequired,
+        
+
         dispatch: React.PropTypes.func.isRequired,
         pathName: React.PropTypes.string.isRequired
     };
@@ -53,42 +54,37 @@ class App extends React.Component {
 
         return (
             <div className="app">
-                <div className="dashboard-page ui-view"> 
-                  <div className="container-fluid"> 
-                    <div className="row"> 
-                      <div className="col-sm-3 col-md-2 sidebar"> 
-                        <div className="text-center"> 
-                          <a onClick={this.goToIndex}>
-                            <h2 className="brand">{GLOBAL_APP_NAME}<br /><small>{GLOBAL_DESCRIP}</small></h2> 
-                            </a>
-                            <img src="https://practicegreenhealth.org/sites/default/files/upload-images/food.png" height="125" width="125" className="user-avatar" />
-                        </div> 
+               <header>
+                <div className="row">
 
-                        <ul className="nav nav-sidebar"> 
-                          <li>
-                            <Link to="/shopping_list">Shopping List</Link>
-                          </li> 
-                          <li>
-                            <Link to="/register">Register</Link>
-                          </li> 
-                          <li>
-                            <Link to="/login">Login</Link>
-                          </li>
-                        </ul> 
-                      </div>
+                    <div className="logo">
+                         <a href="/c">BBytes</a>
+                  </div>
 
-                       <ReactCSSTransitionGroup component="div"
-                                         transitionName="ng"
-                                         transitionEnterTimeout={500}
-                                         transitionLeaveTimeout={300}
-                        >
-                          {React.cloneElement(<div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ng-scope ui-view">{this.props.children}</div> || <div />, { key: pathname })}
-                        </ReactCSSTransitionGroup>
+                    <nav id="main-nav-wrap">
+                        <ul className="main-navigation">
+                            <li><Link to="/shopping_list">Shopping List</Link></li>
+                            <li><Link to="/register">Register</Link></li>
+                            <li><Link to="/login">Login</Link></li>
+                        </ul>
+                    </nav>
 
-                        
-                    </div> 
-                  </div> 
-                </div>
+                    <a className="menu-toggle" href="#"><span>Menu</span></a>
+                    
+                </div>      
+                
+               </header>
+                    <section id="intro">
+
+                        <div className="shadow-overlay"></div>
+
+                        <div className="intro-content">
+                            <div>
+                                {this.props.children}
+                            </div>
+                        </div>
+
+                    </section>
             </div>
         );
     }
@@ -103,6 +99,44 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(mapStateToProps)(App);
 export { App as AppNotConnected };
+
+
+//<div className="dashboard-page ui-view"> 
+//                  <div className="container-fluid"> 
+//                    <div className="row"> 
+//                      <div className="col-sm-3 col-md-2 sidebar"> 
+//                        <div className="text-center"> 
+//                          <a onClick={this.goToIndex}>
+//                            <h2 className="brand">{GLOBAL_APP_NAME}<br /><small>{GLOBAL_DESCRIP}</small></h2> 
+//                            </a>
+//                            <img src="https://practicegreenhealth.org/sites/default/files/upload-images/food.png" height="125" width="125" className="user-avatar" />
+//                        </div> 
+//
+//                        <ul className="nav nav-sidebar"> 
+//                          <li>
+//                            <Link to="/shopping_list">Shopping List</Link>
+//                          </li> 
+//                          <li>
+//                            <Link to="/register">Register</Link>
+//                          </li> 
+//                          <li>
+//                            <Link to="/login">Login</Link>
+//                          </li>
+//                        </ul> 
+//                      </div>
+//
+//                       <ReactCSSTransitionGroup component="div"
+//                                         transitionName="ng"
+//                                         transitionEnterTimeout={500}
+//                                         transitionLeaveTimeout={300}
+//                        >
+//                          {React.cloneElement(<div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ng-scope ui-view">{this.props.children}</div> || <div />, { key: pathname })}
+//                        </ReactCSSTransitionGroup>
+//
+//
+//                    </div> 
+//                  </div> 
+//                </div>
 
                 // <div className="container-fluid">
                 //     <div className="navbar-header">

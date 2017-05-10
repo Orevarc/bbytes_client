@@ -22,7 +22,7 @@ class HomeView extends React.Component {
                 </div>
                 <div className="jumbotron">
                     <h3 className="text-left">Welcome!</h3> <br/>
-                    <h4> Use this app to concert BudgetByte urls into a shopping list. </h4>
+                    <h4> Use this app to turn BudgetByte urls into a shopping list. </h4>
                 </div>
                 <div className="margin-top-medium">
                     {this.props.statusText ?
