@@ -7,6 +7,18 @@ import {
     SL_FETCH_INGREDIENTS_SUCCESS
 } from '../constants';
 
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// Fetching Shopping List
 export function slReceiveIngredientsSuccess(data) {
     return {
         type: SL_FETCH_INGREDIENTS_SUCCESS,
@@ -33,24 +45,13 @@ export function slFetchIngredientsRequest() {
     };
 }
 
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
 export function slFetchIngredients(urls) {
     return (dispatch, state) => {
         dispatch(slFetchIngredientsRequest());
         var myData = {
             recipeUrls: urls.split('\n')
         };
-        return fetch(`${SERVER_URL}/get_ingredients/`, {
+        return fetch(`${SERVER_URL}/shopping_list/`, {
             method: 'post',
             mode: 'cors',
             body: JSON.stringify(myData),
@@ -61,7 +62,7 @@ export function slFetchIngredients(urls) {
             .then(checkHttpStatus)
             .then(parseJSON)
             .then((response) => {
-                dispatch(slReceiveIngredientsSuccess(response.shopping_list));
+                dispatch(slReceiveIngredientsSuccess(response.shoppingList));
             })
             .catch((error) => {
                 console.log(error)

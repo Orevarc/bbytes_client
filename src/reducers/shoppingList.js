@@ -7,7 +7,8 @@ import {
 
 
 const initialState = {
-    data: null,
+    baseIngredients: [],
+    shoppingList: null,
     isFetching: false,
     inputtingRecipes: true,
     statusText: null
@@ -18,7 +19,7 @@ export default createReducer(initialState, {
         return Object.assign({}, state, {
             isFetching: true,
             inputtingRecipes: true,
-            data: null,
+            shoppingList: null,
             statusText: null
         });
     },
@@ -26,7 +27,7 @@ export default createReducer(initialState, {
         return Object.assign({}, state, {
             isFetching: false,
             inputtingRecipes: false,
-            data: payload.data,
+            shoppingList: payload.data,
             statusText: 'Shopping List success'
         });
     },
@@ -34,7 +35,7 @@ export default createReducer(initialState, {
         return Object.assign({}, state, {
             isFetching: false,
             inputtingRecipes: true,
-            data: null,
+            shoppingList: null,
             statusText: `Error: ${payload.status} - ${payload.statusText}`
         });
     },

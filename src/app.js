@@ -8,6 +8,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { authLogoutAndRedirect } from './actions/auth';
 import './styles/main.scss';
 import 'bootstrap/dist/css/bootstrap.css';
+var _ = require('lodash');
 
 import { GLOBAL_APP_NAME, GLOBAL_DESCRIP } from './constants'
 

@@ -4,8 +4,6 @@ import t from 'tcomb-form';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
-
 
 import * as actionCreators from '../../actions/shoppingList';
 import RecipeInput from './recipeInput';
@@ -14,7 +12,7 @@ import ShoppingList from './shoppingList';
 class ShoppingListView extends React.Component {
 
     static propTypes = {
-        data: React.PropTypes.any,
+        shoppingList: React.PropTypes.any,
         inputtingRecipes: React.PropTypes.bool.isRequired,
         isFetching: React.PropTypes.bool.isRequired,
         statusText: React.PropTypes.string,
@@ -35,9 +33,9 @@ class ShoppingListView extends React.Component {
         let inputtingRecipes = this.props.inputtingRecipes;
         var ingredients = {};
         var forReview = [];
-        if (this.props.data) {
-            ingredients = this.props.data.item_list;
-            forReview = this.props.data.for_review;   
+        if (this.props.shoppingList) {
+            ingredients = this.props.shoppingList.item_list;
+            forReview = this.props.shoppingList.for_review;   
         }
         return (
             <div className="container">
@@ -57,7 +55,7 @@ class ShoppingListView extends React.Component {
 const mapStateToProps = (state) => {
     return {
         statusText: state.shoppingList.statusText,
-        data: state.shoppingList.data,
+        shoppingList: state.shoppingList.shoppingList,
         isFetching: state.shoppingList.isFetching,
         inputtingRecipes: state.shoppingList.inputtingRecipes
     };

@@ -51,9 +51,6 @@ class RecipeInput extends React.Component {
         };
     }
 
-    componentWillMount() {
-    }
-
     onFormChange = (value) => {
         this.setState({ formValues: value });
     };
