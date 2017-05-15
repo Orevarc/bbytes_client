@@ -39,7 +39,7 @@ class ShoppingListView extends React.Component {
         }
         return (
             <div className="container">
-                <h1 className="text-left">BBytes SL</h1>
+                <h1 className="text-center">BBytes SL</h1>
                 <div className="jumbotron margin-top-medium">
                     { inputtingRecipes === true ? (
                         <RecipeInput />

@@ -16,8 +16,6 @@ class App extends React.Component {
 
     static propTypes = {
         isAuthenticated: React.PropTypes.bool.isRequired,
-        
-
         dispatch: React.PropTypes.func.isRequired,
         pathName: React.PropTypes.string.isRequired
     };
@@ -75,17 +73,13 @@ class App extends React.Component {
                 </div>      
                 
                </header>
-                    <section id="intro">
-
-                        <div className="shadow-overlay"></div>
-
-                        <div className="intro-content">
-                            <div>
-                                {this.props.children}
-                            </div>
+                <section id="intro">
+                    <div className="intro-content">
+                        <div>
+                            {this.props.children}
                         </div>
-
-                    </section>
+                    </div>
+                </section>
             </div>
         );
     }

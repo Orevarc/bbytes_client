@@ -6,7 +6,7 @@
  */
 
 #intro {
-	background: #14181E url("http://www.goldcoastfoodphotographer.com/wp-content/uploads/2013/07/SLIDER_Mexican_Food_Top_Down_Table_by_Paul_Williams_Gold_Coast_Brisbane_Food_Photography.jpg") no-repeat center;
+	background-color: $bb-white;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -36,8 +36,8 @@
 	transform: translateY(-1.2rem);
 }
 .intro-content h1 {
-	color: #FFFFFF;
-	font-family: "merriweather-bold", serif;
+	color: $bb-black;
+	font-family: 'Shadows Into Light Two', cursive;
 	font-size: 5.4rem;
 	line-height: 1.334;
 	max-width: 800px;
@@ -46,7 +46,7 @@
 }
 .intro-content h5 {
 	color: rgba(255, 255, 255, 0.6);
-	font-family: "raleway-heavy", sans-serif;
+	font-family: 'Shadows Into Light Two', cursive;
 	font-size: 1.8rem;
 	line-height: 1.667;
 	margin-bottom: 0.6rem;
@@ -67,7 +67,7 @@
 	line-height: 6rem;
 	padding: 0 3rem !important;
 	margin-top: 1.8rem;
-	font-family: "raleway-heavy", sans-serif;
+	font-family: 'Shadows Into Light Two', cursive;
 	font-size: 1.4rem;
 	text-transform: uppercase;
 	letter-spacing: .4rem;

@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../actions/ingredients';
 import { transformBaseIngredients } from '../../utils/transforms';
 
+import BaseIngredient from './baseIngredient';
+
 class IngredientMapping extends React.Component {
 
   static propTypes = {
@@ -23,6 +25,7 @@ class IngredientMapping extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      addingNewBaseIngredient: false,
       selectedBaseIngredient: ''
     }
   }
@@ -31,7 +34,7 @@ class IngredientMapping extends React.Component {
     this.props.actions.ingFetchBaseIngredients();
   }
 
-  switchIngredient = (newIngredient) => {
+  switchBaseIngredient = (newIngredient) => {
     this.setState({
       selectedBaseIngredient: newIngredient
     });
@@ -46,20 +49,26 @@ class IngredientMapping extends React.Component {
     this.props.actions.ingPostIngredientMapping(ingredientMapping);
   }
 
+  addNewBaseIngredient = () => {
+    this.setState({
+      addingNewBaseIngredient: !this.state.addingNewBaseIngredient
+    })
+  }
+
   render() {
     let item = this.props.item;
     let baseIngredients = this.props.baseIngredients;
     return (
       <div className="row">
-        <div className="col-sm-12">
+        <div id='ingredient-add-drop' className="col-sm-12">
           <div className="col-sm-4">
             <div className='text-left alert'>
               Should map to:
             </div>
           </div>
           <div className="col-sm-8">
-            <Select ref="ingredientSelect" autofocus options={baseIngredients} simpleValue name="selected-ingredient"  onChange={this.switchIngredient} value={this.state.selectedBaseIngredient} valueKey='id' labelKey='name' searchable={true} />
-            <div className="col-sm-5">
+            <Select ref="ingredientSelect" autofocus options={baseIngredients} simpleValue name="selected-ingredient"  onChange={this.switchBaseIngredient} value={this.state.selectedBaseIngredient} valueKey='id' labelKey='name' searchable={true} />
+            <div className="pull-right col-sm-3">
               <button onClick={this.postIngredientMapping}
                       className="pull-right btn-outline btn-rounded btn-block"
               >
@@ -67,7 +76,15 @@ class IngredientMapping extends React.Component {
               </button>
             </div>
           </div>
-        </div>  
+          <div className="col-sm-12">
+            Add new Base Ingredient: 
+            <input type="checkbox" onChange={this.addNewBaseIngredient} name='new_base_ingredient' name='new_base_ingredient'/>
+          </div>
+          { this.state.addingNewBaseIngredient ? 
+            <BaseIngredient item={item}/>
+            : null
+          }
+        </div>
       </div>
     )
   }

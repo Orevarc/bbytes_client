@@ -3,6 +3,7 @@ import {
     ING_FETCH_BASE_INGREDIENTS_FAILURE,
     ING_FETCH_BASE_INGREDIENTS_REQUEST,
     ING_FETCH_BASE_INGREDIENTS_SUCCESS,
+    ING_FETCH_INGREDIENT_CATEGORIES_SUCCESS,
     ING_POST_INGREDIENT_MAPPING_REQUEST,
     ING_POST_INGREDIENT_MAPPING_SUCCESS,
     ING_POST_INGREDIENT_MAPPING_FAILURE
@@ -10,6 +11,7 @@ import {
 
 
 const initialState = {
+    ingredientCategories: [],
     baseIngredients: [],
     statusText: null
 };
@@ -46,6 +48,12 @@ export default createReducer(initialState, {
     [ING_POST_INGREDIENT_MAPPING_FAILURE]: (state, payload) => {
         return Object.assign({}, state, {
             statusText: `Error: ${payload.status} - ${payload.statusText}`
+        });
+    },
+    [ING_FETCH_INGREDIENT_CATEGORIES_SUCCESS]: (state, payload) => {
+        return Object.assign({}, state, {
+            ingredientCategories: payload.data,
+            statusText: 'Ingredient Categories fecthed successfully'
         });
     },
 });
