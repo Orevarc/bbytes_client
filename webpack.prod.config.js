@@ -7,7 +7,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TARGET = process.env.npm_lifecycle_event;
 
 module.exports = {
-  devtool: 'source-map',
   entry: [
     './src/main'
   ],
@@ -121,19 +120,13 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    // extractCSS.extract('style'),
-                    'css-loader?localIdentName=[path][name]--[local]',
-                    'postcss-loader'
-                ]
-            }, 
-            {
+                use: ['style-loader', 'css-loader'],
+            }, {
                 test: /\.scss$/,
                 use: [
-                    // extractCSS.extract('style'),
-                    'css-loader?localIdentName=[path][name]--[local]',
-                    'postcss-loader',
-                    'sass-loader',
+                  'style-loader',
+                  'css-loader',
+                  'sass-loader',
                 ]
             }
         ]
