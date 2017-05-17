@@ -10,7 +10,6 @@ export default(
         <Route path="login" component={LoginView}/>
         <Route path="shopping_list" component={ShoppingListView}/>
         <Route path="register" component={RegisterView}/>
-        <Route path="protected" component={requireAuthentication(ProtectedView)}/>
         <Route path="*" component={NotFoundView}/>
     </Route>
 );

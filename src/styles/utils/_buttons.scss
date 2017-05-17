@@ -35,12 +35,9 @@
 
 	&.btn-success {
 
-		box-shadow: 0 0 0 2px darken($bb-success, 10%) inset;
-		color: darken($bb-success, 10%);
-
 		&:hover {
 			box-shadow: 0 0 0 2px $bb-success inset;
-			color: $bb-success;
+			color: $bb-white;
 		}
 
 	}

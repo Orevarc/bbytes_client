@@ -39,21 +39,9 @@ class ForReviewItem extends React.Component {
   render() {
     let item = this.props.item;
     return (
-      <div className="row">
-        <div className="col-sm-12">
-          <div className="col-sm-8">
-            <div className='text-left alert'>
-              {item.name}
-            </div>
-          </div>
-          <div className="col-sm-4">
-            <div className="col-sm-2 pull-right">
-              <FontAwesome name='trash-o' />
-            </div>
-            <div className="pull-right" onClick={this.onAddIngredientMappingClick}>
-              <FontAwesome name='pencil' />
-            </div>
-          </div>
+      <div className="for-review">
+        <div onClick={this.onAddIngredientMappingClick}>
+          {item.name}
         </div>
         { this.state.addingIngredientMapping ? 
           <IngredientMapping item={item}/>
@@ -65,3 +53,25 @@ class ForReviewItem extends React.Component {
 }
 
 export default ForReviewItem;
+
+//  <div className="for-review">
+//   <div className="col-sm-12">
+//     <div className="col-sm-8">
+//       <div className='text-left'>
+        
+//       </div>
+//     </div>
+//     <div className="col-sm-4">
+//       <div className="col-sm-2 pull-right">
+//         <FontAwesome name='trash-o' />
+//       </div>
+//       <div className="pull-right" onClick={this.onAddIngredientMappingClick}>
+//         <FontAwesome name='pencil' />
+//       </div>
+//     </div>
+  // { this.state.addingIngredientMapping ? 
+  //   <IngredientMapping item={item}/>
+  //   : null
+  // }
+//   </div>
+// </div>

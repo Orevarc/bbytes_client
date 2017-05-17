@@ -13,13 +13,9 @@ class ShoppingListItem extends React.Component {
     let unit = this.props.item.unit;
     let category = this.props.item.category;
     return (
-      <div className="row">
-        <div className="col-sm-12">
-          <div className='alert'>
-            {name}: {amount}{unit}
-          </div>
-        </div>
-      </div>
+      <li>
+        {name}: {amount}{unit}
+      </li>
     )
   }
 }

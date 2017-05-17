@@ -57,7 +57,7 @@ class App extends React.Component {
                 <div className="row">
 
                     <div className="logo">
-                         <a href="/c">BBytes</a>
+                         <a href="/">BBytes</a>
                   </div>
 
                     <nav id="main-nav-wrap">

@@ -17,7 +17,7 @@ class HomeView extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="text-left">
+                <div className="text-center">
                     <h1>{GLOBAL_APP_NAME}</h1>
                 </div>
                 <div className="jumbotron">
