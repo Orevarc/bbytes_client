@@ -10,6 +10,8 @@ import * as actionCreators from '../../actions/shoppingList';
 import RecipeInput from './recipeInput';
 import ShoppingList from './shoppingList';
 import ForReviewList from './forReviewList';
+import RefreshRecipesButton from '../../components/refreshRecipesButton'
+import MoreRecipesButton from '../../components/moreRecipesButton'
 
 class ShoppingListView extends React.Component {
 
@@ -42,20 +44,22 @@ class ShoppingListView extends React.Component {
         }
         return (
             <div className="container">
-                <h1 className="text-center">BBytes SL</h1>
+                <h1 className="text-center">BBytes Shopping List</h1>
                 { inputtingRecipes === true ? (
                     isFetching ? (
                         <div className="loading-spinner">
                             <Spinner spinnerName="three-bounce" noFadeIn />
                         </div>
                     ) : (
-                        <div className="jumbotron margin-top-medium">
-                            <RecipeInput />
-                        </div>
+                        <RecipeInput />
                     )
                 ) : inputtingRecipes === false ? (
                     forReview.length && ingredients ? (
                         <div>
+                            <div className="btn-group">
+                                <MoreRecipesButton />
+                                <RefreshRecipesButton />
+                            </div>
                             <ForReviewList forReview={forReview} /> 
                             <ShoppingList allIngredients={ingredients} />
                         </div>

@@ -4,8 +4,6 @@ import t from 'tcomb-form';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
-
 
 import * as actionCreators from '../../actions/shoppingList';
 
@@ -15,15 +13,24 @@ const Recipes = t.struct({
     recipeUrls: t.String
 });
 
+const RecipeFormLayout = (locals) => {
+    return (
+        <div className="recipe-input-paper">
+            <div className="recipe-input">
+                {locals.inputs.recipeUrls}
+            </div>
+        </div>
+    );
+};
+
 const RecipeFormOptions = {
+    template: RecipeFormLayout,
     fields : {
         recipeUrls: {
-            config: {
-                size: 'lg'
-            },
             type: 'textarea',
+            label: ' ',
             attrs: {
-                className: 'input-underline input-lg',
+                rows: 9,
                 placeholder: 'Paste urls here...'
             }
         }
@@ -33,8 +40,7 @@ const RecipeFormOptions = {
 class RecipeInput extends React.Component {
 
     static propTypes = {
-        data: React.PropTypes.string,
-        isFetching: React.PropTypes.bool.isRequired,
+        recipeUrls: React.PropTypes.string.isRequired,
         statusText: React.PropTypes.string,
         actions: React.PropTypes.shape({
             slFetchIngredients: React.PropTypes.func.isRequired
@@ -46,7 +52,7 @@ class RecipeInput extends React.Component {
 
         this.state = {
             formValues: {
-                recipeUrls: ''
+                recipeUrls: this.props.recipeUrls
             },
         };
     }
@@ -74,7 +80,7 @@ class RecipeInput extends React.Component {
             />
             <button disabled={this.props.isFetching}
                     type="submit"
-                    className="btn-lg btn-outline btn-rounded"
+                    className="btn-lg action-button animate green"
             >
                 Get Ingredients
             </button>
@@ -85,9 +91,8 @@ class RecipeInput extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        statusText: state.auth.statusText,
-        data: state.data.data,
-        isFetching: state.data.isFetching
+        recipeUrls: state.shoppingList.recipeUrls,
+        statusText: state.shoppingList.statusText,
     };
 };
 

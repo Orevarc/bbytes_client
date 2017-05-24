@@ -1,14 +1,37 @@
 import React from 'react';
 import Select from 'react-select';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as actionCreators from '../actions/ingredients';
 
 class IngredientMappingSelect extends React.Component {
+
+  static propTypes = {
+    item: React.PropTypes.shape().isRequired,
+    baseIngredients: React.PropTypes.array.isRequired,
+    actions: React.PropTypes.shape({
+      ingPostIngredientMapping: React.PropTypes.func.isRequired
+    })
+  };
+
+
 
   constructor(props) {
     super(props);
     this.state = {
       selectedBaseIngredient: ''
     }
+  }
+
+  postIngredientMapping = () => {
+    // Do some front end checking?
+    let ingredientMapping = {
+      name: this.props.item.name,
+      ingredient: this.state.selectedBaseIngredient
+    }
+    this.props.actions.ingPostIngredientMapping(ingredientMapping);
   }
 
   switchBaseIngredient = (newIngredient) => {
@@ -20,7 +43,7 @@ class IngredientMappingSelect extends React.Component {
   render() {
     return (
       <div id='ingredient-add-drop' className="col-sm-12">
-        <div className="col-md-10 for-review-dropdown">
+        <div className="col-sm-10 for-review-dropdown">
           <Select ref="ingredientSelect" 
                   autofocus 
                   options={this.props.baseIngredients} 
@@ -33,9 +56,9 @@ class IngredientMappingSelect extends React.Component {
                   searchable={true} 
           />
         </div>
-        <div className="pull-right col-sm-3">
+        <div className="pull-right col-sm-2">
             <button onClick={this.postIngredientMapping}
-                    className="btn-success btn-outline btn-rounded btn-block"
+                    className="btn-lg action-button animate green"
             >
               Submit
             </button>
@@ -45,5 +68,18 @@ class IngredientMappingSelect extends React.Component {
   }
 }
 
-export default IngredientMappingSelect;
+const mapStateToProps = (state) => {
+    return {
+        baseIngredients: state.ingredients.baseIngredients
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(IngredientMappingSelect);
+export { IngredientMappingSelect as IngredientMappingSelectNotConnected };
         

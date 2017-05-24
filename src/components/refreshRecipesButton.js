@@ -1,34 +1,49 @@
 import React from 'react';
+import FontAwesome from 'react-fontawesome';
 
-import ShoppingListItem from './shoppingListItem';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as actionCreators from '../actions/shoppingList';
 
 class RefreshRecipesButton extends React.Component {
 
   static propTypes = {
-    category: React.PropTypes.string,
-    ingredients: React.PropTypes.shape().isRequired,
+    recipeUrls: React.PropTypes.any.isRequired,
+    actions: React.PropTypes.shape({
+      slFetchIngredients: React.PropTypes.func.isRequired
+    })
+  };
+
+  fetchIngredients = (e) => {
+    e.preventDefault();
+    const urls = this.props.recipeUrls;
+    this.props.actions.slFetchIngredients(urls);
   };
 
   render() {
-    let ingredients = this.props.ingredients;
     return (
-      <div>
-        <div className="notepad-paper">
-          <div className="notepad-category">
-            {this.props.category}
-          </div>
-          <div className="notepad-lines"></div>
-          <ul className="notepad-list">
-          {Object.keys(ingredients).map(function(key) {
-            return <ShoppingListItem key={ingredients[key]['name']} 
-                                     name={ingredients[key]['name']} 
-                                     item={ingredients[key]} />
-          })}
-          </ul>
-        </div>
+      <div className="refresh-button">
+        <button onClick={this.fetchIngredients}
+                className="btn-lg action-button animate green">
+          <FontAwesome name='refresh' /> Refresh
+        </button>
       </div>
     )
   }
 }
 
-export default RefreshRecipesButton;
+const mapStateToProps = (state) => {
+    return {
+        recipeUrls: state.shoppingList.recipeUrls,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(actionCreators, dispatch)
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RefreshRecipesButton);
+export { RefreshRecipesButton as RefreshRecipesButtonNotConnected };

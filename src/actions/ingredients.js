@@ -120,6 +120,7 @@ export function ingPostBaseIngredient(name, category) {
             .then(parseJSON)
             .then((response) => {
                 dispatch(ingPostBaseIngredientSuccess(response));
+                dispatch(ingFetchBaseIngredients());
             })
             .catch((error) => {
                 console.log(error)

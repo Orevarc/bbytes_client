@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
 import {
+    SL_ADD_MORE_RECIPES,
     SL_FETCH_INGREDIENTS_FAILURE,
     SL_FETCH_INGREDIENTS_REQUEST,
     SL_FETCH_INGREDIENTS_SUCCESS
@@ -16,6 +17,14 @@ function getCookie(name) {
         if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
+}
+
+export function slAddMoreRecipes() {
+    return (dispatch, state) => {
+        return dispatch({
+            type: SL_ADD_MORE_RECIPES,
+        })
+    }
 }
 
 // Fetching Shopping List
@@ -38,16 +47,18 @@ export function slReceiveIngredientsFailure(statusCode, errors) {
     };
 }
 
-export function slFetchIngredientsRequest() {
+export function slFetchIngredientsRequest(urls) {
     return {
         type: SL_FETCH_INGREDIENTS_REQUEST,
-        payload: ''
+        payload: {
+            urls
+        }
     };
 }
 
 export function slFetchIngredients(urls) {
     return (dispatch, state) => {
-        dispatch(slFetchIngredientsRequest());
+        dispatch(slFetchIngredientsRequest(urls));
         var myData = {
             recipeUrls: urls.split('\n')
         };

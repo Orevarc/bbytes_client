@@ -7,6 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const TARGET = process.env.NODE_ENV;
+console.log(TARGET);
 
 module.exports = {
   devtool: 'source-map',
@@ -52,8 +53,8 @@ module.exports = {
             inject: 'body'
         }),
         new webpack.DefinePlugin({
-            'process.env': { NODE_ENV: TARGET === 'dev' ? '"development"' : '"production"' },
-            '__DEVELOPMENT__': TARGET === 'dev'
+            'process.env': { NODE_ENV: TARGET === 'development' ? '"development"' : '"production"' },
+            '__DEVELOPMENT__': TARGET === 'development'
         }),
         new webpack.ProvidePlugin({
             '$': 'jquery',

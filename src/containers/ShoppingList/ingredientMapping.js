@@ -15,11 +15,9 @@ class IngredientMapping extends React.Component {
 
   static propTypes = {
     item: React.PropTypes.shape().isRequired,
-    baseIngredients: React.PropTypes.array,
     statusText: React.PropTypes.string,
     actions: React.PropTypes.shape({
       ingFetchBaseIngredients: React.PropTypes.func.isRequired,
-      ingPostIngredientMapping: React.PropTypes.func.isRequired
     })
   };
 
@@ -47,7 +45,7 @@ class IngredientMapping extends React.Component {
       <div className="row">
         { this.state.addingNewBaseIngredient ?
           <BaseIngredient item={item}/> :
-          <IngredientMappingSelect />
+          <IngredientMappingSelect item={item}/>
         }
         <div className="col-sm-12">
           Add new Base Ingredient: 
