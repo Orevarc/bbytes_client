@@ -6,7 +6,7 @@ class ShoppingListSection extends React.Component {
 
   static propTypes = {
     category: React.PropTypes.string,
-    ingredients: React.PropTypes.shape().isRequired,
+    ingredients: React.PropTypes.array.isRequired,
   };
 
   render() {

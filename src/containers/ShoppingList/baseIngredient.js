@@ -11,11 +11,25 @@ import { INGREDIENT_CATEGORIES } from '../../constants';
 
 const Form = t.form.Form;
 
+const BaseIngredientFormLayout = (locals) => {
+  return (
+    <div className="col-sm-12">
+      <div className="col-sm-10">
+        {locals.inputs.name}
+      </div>
+      <div className="col-sm-10">
+        {locals.inputs.category}
+      </div>
+    </div>
+  );
+};
+
 const BaseIngredientFormOptions = {
+  template: BaseIngredientFormLayout,
   fields: {
     category: { }
   }
-}
+};
 
 class BaseIngredient extends React.Component {
 

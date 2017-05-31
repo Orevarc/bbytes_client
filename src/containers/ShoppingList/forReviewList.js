@@ -19,7 +19,7 @@ class ForReviewList extends React.Component {
           {forReview.map(function(item) {
             return <ForReviewItem key={item.name} item={item} />
           })}
-        </ul>
+          </ul>
         </div>
       </div>
     )

@@ -10,13 +10,15 @@ import * as actionCreators from '../../actions/shoppingList';
 import RecipeInput from './recipeInput';
 import ShoppingList from './shoppingList';
 import ForReviewList from './forReviewList';
+import RecipeInfoContainer from '../../components/recipeInfoContainer'
 import RefreshRecipesButton from '../../components/refreshRecipesButton'
 import MoreRecipesButton from '../../components/moreRecipesButton'
 
 class ShoppingListView extends React.Component {
 
     static propTypes = {
-        shoppingList: React.PropTypes.any,
+        shoppingList: React.PropTypes.array,
+        forReview: React.PropTypes.array,
         inputtingRecipes: React.PropTypes.bool.isRequired,
         isFetching: React.PropTypes.bool.isRequired,
         statusText: React.PropTypes.string,
@@ -39,8 +41,8 @@ class ShoppingListView extends React.Component {
         var ingredients = null;
         var forReview = null;
         if (this.props.shoppingList) {
-            ingredients = this.props.shoppingList.item_list;
-            forReview = this.props.shoppingList.for_review;
+            ingredients = this.props.shoppingList;
+            forReview = this.props.forReview;
         }
         return (
             <div className="container">
@@ -60,6 +62,7 @@ class ShoppingListView extends React.Component {
                                 <MoreRecipesButton />
                                 <RefreshRecipesButton />
                             </div>
+                            <RecipeInfoContainer />
                             <ForReviewList forReview={forReview} /> 
                             <ShoppingList allIngredients={ingredients} />
                         </div>
@@ -76,6 +79,7 @@ const mapStateToProps = (state) => {
     return {
         statusText: state.shoppingList.statusText,
         shoppingList: state.shoppingList.shoppingList,
+        forReview: state.shoppingList.forReview,
         isFetching: state.shoppingList.isFetching,
         inputtingRecipes: state.shoppingList.inputtingRecipes
     };

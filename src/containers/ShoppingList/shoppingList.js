@@ -17,7 +17,7 @@ class ShoppingList extends React.Component {
   };
 
   static propTypes = {
-    allIngredients: React.PropTypes.shape().isRequired,
+    allIngredients: React.PropTypes.array.isRequired,
   };
 
   render() {
@@ -29,7 +29,7 @@ class ShoppingList extends React.Component {
           <div className="notepad-lines"></div>
           <ul className="notepad-list">
           {Object.keys(sortedIngredients).map(function(key) {
-            return <ShoppingListSection category={key} ingredients={sortedIngredients[key]} />
+            return <ShoppingListSection key={key} category={key} ingredients={sortedIngredients[key]} />
           })}
           </ul>
         </div>

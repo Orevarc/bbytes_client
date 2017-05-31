@@ -3,10 +3,13 @@ import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
 import {
     SL_ADD_MORE_RECIPES,
+    SL_CHANGE_RECIPE_AMOUNT,
     SL_FETCH_INGREDIENTS_FAILURE,
     SL_FETCH_INGREDIENTS_REQUEST,
     SL_FETCH_INGREDIENTS_SUCCESS
 } from '../constants';
+
+import { changeRecipeIngredientAmounts } from '../utils/transforms';
 
 function getCookie(name) {
     var nameEQ = name + "=";
@@ -23,8 +26,22 @@ export function slAddMoreRecipes() {
     return (dispatch, state) => {
         return dispatch({
             type: SL_ADD_MORE_RECIPES,
-        })
-    }
+        });
+    };
+}
+
+// Changing Recipe Amounts
+export function slChangeRecipeAmount(recipeUrl, amount) {
+    return (dispatch, state) => {
+        let shoppingList = state().shoppingList.shoppingList;
+        shoppingList = changeRecipeIngredientAmounts(shoppingList, recipeUrl, amount);
+        return dispatch({
+            type: SL_CHANGE_RECIPE_AMOUNT,
+            payload: {
+                shoppingList: shoppingList
+            }
+        });
+    };
 }
 
 // Fetching Shopping List
@@ -32,7 +49,8 @@ export function slReceiveIngredientsSuccess(data) {
     return {
         type: SL_FETCH_INGREDIENTS_SUCCESS,
         payload: {
-            data
+            'shoppingList': data.shopping_list,
+            'recipes': data.recipes
         }
     };
 }
@@ -73,7 +91,7 @@ export function slFetchIngredients(urls) {
             .then(checkHttpStatus)
             .then(parseJSON)
             .then((response) => {
-                dispatch(slReceiveIngredientsSuccess(response.shoppingList));
+                dispatch(slReceiveIngredientsSuccess(response));
             })
             .catch((error) => {
                 console.log(error)
@@ -90,7 +108,6 @@ export function slFetchIngredients(urls) {
                     dispatch(slReceiveIngredientsFailure('Connection Error', 'An error occurred while sending your data!'));
                 }
 
-                // dispatch(push('/login'));
                 return Promise.resolve(); // TODO: we need a promise here because of the tests, find a better way
             });
     };
