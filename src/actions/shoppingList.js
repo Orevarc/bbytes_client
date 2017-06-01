@@ -3,13 +3,13 @@ import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
 import {
     SL_ADD_MORE_RECIPES,
-    SL_CHANGE_RECIPE_AMOUNT,
+    SL_CHANGE_RECIPES_AMOUNT,
     SL_FETCH_INGREDIENTS_FAILURE,
     SL_FETCH_INGREDIENTS_REQUEST,
     SL_FETCH_INGREDIENTS_SUCCESS
 } from '../constants';
 
-import { changeRecipeIngredientAmounts } from '../utils/transforms';
+import { bulkChangeRecipeIngredientAmounts } from '../utils/transforms';
 
 function getCookie(name) {
     var nameEQ = name + "=";
@@ -31,13 +31,15 @@ export function slAddMoreRecipes() {
 }
 
 // Changing Recipe Amounts
-export function slChangeRecipeAmount(recipeUrl, amount) {
+export function slChangeRecipesAmount(recipeMultipliers) {
     return (dispatch, state) => {
         let shoppingList = state().shoppingList.shoppingList;
-        shoppingList = changeRecipeIngredientAmounts(shoppingList, recipeUrl, amount);
+        const recipes = state().shoppingList.recipes;
+        shoppingList = bulkChangeRecipeIngredientAmounts(shoppingList, recipes, recipeMultipliers);
         return dispatch({
-            type: SL_CHANGE_RECIPE_AMOUNT,
+            type: SL_CHANGE_RECIPES_AMOUNT,
             payload: {
+                recipeMultipliers: recipeMultipliers,
                 shoppingList: shoppingList
             }
         });

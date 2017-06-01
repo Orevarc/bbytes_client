@@ -1,4 +1,16 @@
-export function changeRecipeIngredientAmounts(shoppingList, recipeUrl, recipeMultiplier) {
+export function bulkChangeRecipeIngredientAmounts(shoppingList, recipes, recipeMultipliers) {
+	for (let recipeMultiplier of recipeMultipliers) {
+		const url = recipeMultiplier.url;
+		const newMultiplier = recipeMultiplier.multiplier;
+		const currentMultiplier = _.find(recipes, {'url': url}).multiplier;
+		if (newMultiplier != currentMultiplier) {
+			shoppingList = changeRecipeIngredientAmounts(shoppingList, url, currentMultiplier, newMultiplier);
+		}
+	}
+	return _.cloneDeep(shoppingList);
+}
+
+export function changeRecipeIngredientAmounts(shoppingList, recipeUrl, currentMultiplier, newMultiplier) {
 	let changedItems = [];
 	for (let item of shoppingList) {
 		for (let recipe of item.recipes) {
@@ -14,10 +26,12 @@ export function changeRecipeIngredientAmounts(shoppingList, recipeUrl, recipeMul
 	}
 
 	for (let changeItem of changedItems) {
-		let recipeAmount = changeItem.recipeAmount;
-		const changedAmount = (recipeAmount * recipeMultiplier) - recipeAmount;
+		const recipeAmount = changeItem.recipeAmount;
+		const oldAmount = recipeAmount * currentMultiplier;
+		const newAmount = recipeAmount * newMultiplier;
+		const changedAmount = newAmount - oldAmount;
 		let shoppingListIndex = shoppingList.findIndex(item => item.name === changeItem.name && item.unit === changeItem.unit);
 		shoppingList[shoppingListIndex].amount += changedAmount
 	}
-	return _.cloneDeep(shoppingList);
+	return shoppingList;
 }

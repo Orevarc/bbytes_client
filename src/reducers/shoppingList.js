@@ -1,7 +1,7 @@
 import { createReducer } from '../utils';
 import {
     SL_ADD_MORE_RECIPES,
-    SL_CHANGE_RECIPE_AMOUNT,
+    SL_CHANGE_RECIPES_AMOUNT,
     SL_FETCH_INGREDIENTS_FAILURE,
     SL_FETCH_INGREDIENTS_REQUEST,
     SL_FETCH_INGREDIENTS_SUCCESS
@@ -27,9 +27,13 @@ export default createReducer(initialState, {
             forReview: null,
         });
     },
-    [SL_CHANGE_RECIPE_AMOUNT]: (state, payload) => {
+    [SL_CHANGE_RECIPES_AMOUNT]: (state, payload) => {
         return Object.assign({}, state, {
-            shoppingList: payload.shoppingList
+            shoppingList: payload.shoppingList,
+            recipes: state.recipes.map(recipe => _.find(payload.recipeMultipliers, {url: recipe.url}) ?
+                {...recipe, multiplier: _.find(payload.recipeMultipliers, {url: recipe.url}).multiplier } :
+                recipe
+        )
         });
     },
     [SL_FETCH_INGREDIENTS_REQUEST]: (state, payload) => {
