@@ -45,11 +45,13 @@ class RecipeInfoContainer extends React.Component {
     let multiplierHandler = this.handleRecipeMultiplierChange;
     return (
       <div>
-        <h3 className="text-center">Recipes </h3>
-        <button onClick={this.changeRecipesAmount}
-                className="btn-lg action-button animate green">
-          Apply
-        </button>
+        <div className="title">
+          <h3 className="text-left">Recipes</h3>
+          <button onClick={this.changeRecipesAmount}
+                  className="btn-lg action-button animate green">
+            Apply
+          </button>
+        </div>
         <div className="recipe-container">
           {recipes.map(function(recipe) {
             return <RecipeInfo handleMultiplierChange={multiplierHandler} 

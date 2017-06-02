@@ -35,6 +35,23 @@ class ShoppingListView extends React.Component {
         };
     }
 
+    renderLoadingSpinner() {
+        return (
+            <div className="loading-spinner">
+                <Spinner spinnerName="three-bounce" noFadeIn />
+            </div>
+        );
+    };
+
+    renderShoppingListButtons() {
+        return (
+            <div className="btn-group">
+                <MoreRecipesButton />
+                <RefreshRecipesButton />
+            </div> 
+        );
+    };
+
     render() {
         let inputtingRecipes = this.props.inputtingRecipes;
         let isFetching = this.props.isFetching;
@@ -45,13 +62,11 @@ class ShoppingListView extends React.Component {
             forReview = this.props.forReview;
         }
         return (
-            <div className="container">
+            <div>
                 <h1 className="text-center">BBytes Shopping List</h1>
                 { inputtingRecipes === true ? (
                     isFetching ? (
-                        <div className="loading-spinner">
-                            <Spinner spinnerName="three-bounce" noFadeIn />
-                        </div>
+                        this.renderLoadingSpinner()
                     ) : (
                         <RecipeInput />
                     )
@@ -62,9 +77,17 @@ class ShoppingListView extends React.Component {
                                 <MoreRecipesButton />
                                 <RefreshRecipesButton />
                             </div>
-                            <RecipeInfoContainer />
-                            <ForReviewList forReview={forReview} /> 
-                            <ShoppingList allIngredients={ingredients} />
+                            <div className="shopping-list-container">
+                                <div className="recipe-column">
+                                    <RecipeInfoContainer />
+                                </div>
+                                <div className="list-column">
+                                    <ShoppingList allIngredients={ingredients} />
+                                </div>
+                                <div className="for-review-column">
+                                    <ForReviewList forReview={forReview} /> 
+                                </div>
+                            </div>
                         </div>
                     ) : ingredients ? (
                         <ShoppingList allIngredients={ingredients} />

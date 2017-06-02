@@ -4,12 +4,13 @@ import { checkHttpStatus, parseJSON } from '../utils';
 import {
     SL_ADD_MORE_RECIPES,
     SL_CHANGE_RECIPES_AMOUNT,
+    SL_REMOVE_RECIPE,
     SL_FETCH_INGREDIENTS_FAILURE,
     SL_FETCH_INGREDIENTS_REQUEST,
     SL_FETCH_INGREDIENTS_SUCCESS
 } from '../constants';
 
-import { bulkChangeRecipeIngredientAmounts } from '../utils/transforms';
+import { bulkChangeRecipeIngredientAmounts } from '../utils/recipes';
 
 function getCookie(name) {
     var nameEQ = name + "=";
@@ -28,6 +29,10 @@ export function slAddMoreRecipes() {
             type: SL_ADD_MORE_RECIPES,
         });
     };
+}
+
+export function slRemoveRecipe(url) {
+
 }
 
 // Changing Recipe Amounts

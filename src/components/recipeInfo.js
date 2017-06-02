@@ -22,31 +22,43 @@ class RecipeInfo extends React.Component {
     }
   };
 
-  handleChange = (e) => {
-    const multiplier = this.refs.recipeMultiplier.value;
-    if (multiplier) {
-       this.setState({
-        multiplier: multiplier
-      });
-      this.props.handleMultiplierChange(this.props.recipe.url, parseFloat(multiplier));
-    }
-  }
+  changeMultiplier = (multiplier) => {
+    this.setState({
+      multiplier: multiplier
+    });
+    this.props.handleMultiplierChange(this.props.recipe.url, parseFloat(multiplier));
+  };
+
+  decMultiplier = (e) => {
+    const multiplier = this.state.multiplier - 1;
+    this.changeMultiplier(multiplier);
+  };
+
+  incMultiplier = (e) => {
+    const multiplier = this.state.multiplier + 1;
+    this.changeMultiplier(multiplier);
+  };
 
   render() {
     let recipe = this.props.recipe
     return (
-      <div className="col-sm-12">
-        <div className="col-sm-2">
-          <FontAwesome name="times"/>
-        </div>
-        <div className="col-sm-7">
-          {recipe.title}
-        </div>
-        <div className="col-sm-3">
-          <input ref="recipeMultiplier" 
-                 onChange={this.handleChange} 
-                 onKeyPress={this.validateRecipeAmount} 
-                 value={this.state.multiplier}/>
+      <div className="recipe-box">
+        <div className="recipe">
+          <div className="recipe-image">
+            <figure className="image is-64x64">
+              <img src={recipe.img} alt="Image"/>
+            </figure>
+          </div>
+          <div className="recipe-content">
+            <p>
+              <strong>{recipe.title}</strong>
+            </p>
+          </div>
+          <div className="recipe-controls">
+            <FontAwesome onClick={this.incMultiplier} name="chevron-up" />
+            <p>{this.state.multiplier}</p>
+            <FontAwesome onClick={this.decMultiplier} name="chevron-down" />
+          </div>
         </div>
       </div>
     )

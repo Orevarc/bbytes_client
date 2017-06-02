@@ -1,4 +1,5 @@
 import React from 'react';
+import { CSSTransitionGroup } from 'react-transition-group'
 
 import FontAwesome from 'react-fontawesome';
 
@@ -34,17 +35,31 @@ class ForReviewItem extends React.Component {
     this.setState({addingIngredientMapping: !this.state.addingIngredientMapping });
   };
 
+  renderIngredientMapping() {
+    return (
+      <IngredientMapping item={item}/>
+    );
+  };
+
   render() {
     let item = this.props.item;
+    let ingMapping = null;
+    if (this.state.addingIngredientMapping) {
+      ingMapping = <IngredientMapping item={item}/>;
+    }
+    const transitionStyle = {
+      'max-height': this.state.addingIngredientMapping ? '150px' : '0px'
+    };
     return (
       <div className="for-review">
         <div onClick={this.onAddIngredientMappingClick}>
           {item.name}
         </div>
-        { this.state.addingIngredientMapping ? 
-          <IngredientMapping item={item}/>
-          : null
-        }
+        <CSSTransitionGroup transitionEnterTimeout={1000}
+                            transitionLeaveTimeout={1000}
+                            transitionName="menu">
+          { ingMapping }
+        </CSSTransitionGroup>      
       </div>
     )
   }

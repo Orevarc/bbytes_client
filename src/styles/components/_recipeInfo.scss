@@ -1,0 +1,86 @@
+.recipe-container {
+	display: flex;
+	flex-direction: column;
+	background: $bb-white;
+}
+
+.recipe-box {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    display: block;
+    padding: 1.25rem;
+    margin: 0.5rem;
+}
+
+.recipe-image,
+.recipe-controls,
+.recipe-info {
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.recipe-image {
+  margin-right: 1rem;
+  border: 1px solid $bb-salmon;
+}
+
+.recipe-controls {
+  margin-left: 1rem;
+  text-align: center;
+  p {
+  	margin-bottom: 0px;
+  	margin-top: 2px;
+  }
+  span {
+  	cursor: pointer;
+  }
+}
+
+.recipe-info {
+  margin-left: 1rem;
+}
+
+.recipe-content {
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: left;
+}
+
+.recipe {
+  align-items: center;
+  display: flex;
+  text-align: left;
+  .content:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+  .recipe {
+    border-top: 1px solid rgba($border, 0.5);
+    display: flex;
+    padding-top: 0.75rem;
+    .content:not(:last-child),
+    .control:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+    .recipe {
+      padding-top: 0.5rem;
+      & + .recipe {
+        margin-top: 0.5rem;
+      }
+    }
+  & + .recipe {
+    border-top: 1px solid rgba($border, 0.5);
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+  // Sizes
+  &.is-large {
+    & + .recipe {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+    }
+  }
+  }
+}     

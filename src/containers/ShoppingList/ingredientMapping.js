@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as actionCreators from '../../actions/ingredients';
-import { transformBaseIngredients } from '../../utils/transforms';
+import { transformBaseIngredients } from '../../utils/recipes';
 
 import BaseIngredient from './baseIngredient';
 import IngredientMappingSelect from '../../components/ingredientMappingSelect'
@@ -16,6 +16,7 @@ class IngredientMapping extends React.Component {
   static propTypes = {
     item: React.PropTypes.shape().isRequired,
     statusText: React.PropTypes.string,
+
     actions: React.PropTypes.shape({
       ingFetchBaseIngredients: React.PropTypes.func.isRequired,
     })
@@ -29,7 +30,7 @@ class IngredientMapping extends React.Component {
   }
 
   componentDidMount() {
-    this.props.actions.ingFetchBaseIngredients();
+    // this.props.actions.ingFetchBaseIngredients();
   }
 
   addNewBaseIngredient = () => {
@@ -41,8 +42,11 @@ class IngredientMapping extends React.Component {
   render() {
     let item = this.props.item;
     let baseIngredients = this.props.baseIngredients;
+    const transitionStyle = {
+
+    }
     return (
-      <div className="row">
+      <div>
         { this.state.addingNewBaseIngredient ?
           <BaseIngredient item={item}/> :
           <IngredientMappingSelect item={item}/>

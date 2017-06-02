@@ -30,10 +30,7 @@ h5 {
 }
 
 p {
-  font-family: $font-family-regular;
-  font-size: 1rem;
-  line-height: 2rem;
-  color: $color-silver-dark;
+  color: $bb-black;
 }
 
 a {
@@ -48,7 +45,7 @@ a {
 }
 
 b, strong {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 code {
