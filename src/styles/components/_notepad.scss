@@ -55,15 +55,15 @@ h4 {
     -ms-transition:     all 0.2s;
     -o-transition:      all 0.2s;
   }
-
-  .for-review-dropdown {
-    width: 100%;
-    display: inline-block;
-    margin-left: 10px;
-    margin-top: 5px;
-    padding-bottom: 7px;
-  }
 }
+.for-review-dropdown {
+  width: 100%;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 5px;
+  padding-bottom: 7px;
+}
+
 .notepad-lines {
   border-left: 1px solid #ffaa9f;
   border-right: 1px solid #ffaa9f;

@@ -51,8 +51,8 @@ class ForReviewItem extends React.Component {
       'max-height': this.state.addingIngredientMapping ? '150px' : '0px'
     };
     return (
-      <div className="for-review">
-        <div onClick={this.onAddIngredientMappingClick}>
+      <div className="for-review-box">
+        <div className="for-review-title" onClick={this.onAddIngredientMappingClick}>
           {item.name}
         </div>
         <CSSTransitionGroup transitionEnterTimeout={500}

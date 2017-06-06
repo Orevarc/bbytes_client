@@ -13,13 +13,9 @@ class ForReviewList extends React.Component {
     return (
       <div>
         <h3 className="text-center">For Review</h3>
-        <div className="notepad-paper">
-          <ul className="notepad-list">
-          {forReview.map(function(item) {
-            return <ForReviewItem key={item.name} item={item} />
-          })}
-          </ul>
-        </div>
+        {forReview.map(function(item) {
+          return <ForReviewItem key={item.name} item={item} />
+        })}
       </div>
     )
   }

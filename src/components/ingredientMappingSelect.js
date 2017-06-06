@@ -42,8 +42,8 @@ class IngredientMappingSelect extends React.Component {
 
   render() {
     return (
-      <div id='ingredient-add-drop' className="col-sm-12">
-        <div className="col-md-10 for-review-dropdown">
+      <div className="ingredient-mapping">
+        <div className="col-sm-10">
           <Select ref="ingredientSelect" 
                   autofocus 
                   options={this.props.baseIngredients} 
@@ -56,9 +56,9 @@ class IngredientMappingSelect extends React.Component {
                   searchable={true} 
           />
         </div>
-        <div className="pull-right col-sm-3">
+        <div className="pull-right col-sm-2">
             <button onClick={this.postIngredientMapping}
-                    className="btn-lg action-button animate green"
+                    className="button is-medium is-outlined is-primary"
             >
               Submit
             </button>

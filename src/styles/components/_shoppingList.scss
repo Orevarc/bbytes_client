@@ -94,3 +94,56 @@
 		align-items: center;
 	}
 }
+
+.for-review-enter {
+  max-height: 0px;
+  -webkit-transition: max-height .5s ease;
+  overflow: hidden;
+}
+
+.for-review-enter.for-review-enter-active {
+  height: auto;
+  max-height: 155px;
+}
+
+.for-review-leave {
+  max-height: 155px;
+  -webkit-transition: max-height .5s ease-out;
+}
+
+.for-review-leave.for-review-leave-active {
+  overflow: hidden;
+  max-height: 0px;
+}
+
+.for-review-box {
+	width: 100%;
+	position: relative;
+	height: auto;
+	font-family: 'Quicksand', sans-serif;
+
+	.ingredient-mapping-container {
+		padding-top: 10px;
+		padding-bottom: 7px;
+		border-radius: 0 0 $radius $radius;
+		border: 1px solid rgba(10, 10, 10, 0.1);
+
+	}
+}
+
+.for-review-title {
+	padding: 5px;
+	background-color: $bb-grey-lightest;
+	box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+	border-radius: $radius-large;
+}
+
+.ingredient-mapping-container {
+	display: flex;
+	align-items: center;
+
+	.base-ingredient,
+	.ingredient-mapping {
+		width: 100%;
+	}
+}

@@ -46,12 +46,12 @@ class IngredientMapping extends React.Component {
 
     }
     return (
-      <div>
+      <div className="ingredient-mapping-container">
         { this.state.addingNewBaseIngredient ?
           <BaseIngredient item={item}/> :
           <IngredientMappingSelect item={item}/>
         }
-        <div className="col-sm-12">
+        <div>
           Add new Base Ingredient: 
           <input type="checkbox" onChange={this.addNewBaseIngredient} name='new_base_ingredient'/>
         </div>
