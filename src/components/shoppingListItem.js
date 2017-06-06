@@ -13,9 +13,9 @@ class ShoppingListItem extends React.Component {
     let unit = this.props.item.unit;
     let category = this.props.item.category;
     return (
-      <li>
-        {name}: {amount} {unit}
-      </li>
+      <div className="ingredient">
+        {name}: {amount} <span className="unit">{unit}</span>
+      </div>
     )
   }
 }

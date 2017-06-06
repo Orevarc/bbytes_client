@@ -1,7 +1,6 @@
 .recipe-container {
 	display: flex;
 	flex-direction: column;
-	background: $bb-white;
 }
 
 .recipe-box {
@@ -23,7 +22,7 @@
 
 .recipe-image {
   margin-right: 1rem;
-  border: 1px solid $bb-salmon;
+  border: 1px solid $bb-yellow-primary;
 }
 
 .recipe-controls {

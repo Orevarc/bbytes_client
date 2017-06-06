@@ -24,10 +24,11 @@ class RefreshRecipesButton extends React.Component {
   render() {
     return (
       <div className="refresh-button">
-        <button onClick={this.fetchIngredients}
-                className="btn-lg action-button animate green">
-          <FontAwesome name='refresh' /> Refresh
-        </button>
+        <div onClick={this.fetchIngredients}>
+          <figure className="image is-64x64">
+            <img src="images/refresh.svg" alt="Image"/>
+          </figure>
+        </div>
       </div>
     )
   }

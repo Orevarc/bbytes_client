@@ -1,8 +1,9 @@
 import React from 'react';
-
+import FontAwesome from 'react-fontawesome';
 import ShoppingListItem from './shoppingListItem';
 
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group'
+import { INGREDIENT_CATEGORIES } from '../constants';
 
 class ShoppingListSection extends React.Component {
 
@@ -11,23 +12,61 @@ class ShoppingListSection extends React.Component {
     ingredients: React.PropTypes.array.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      categoryExpanded: true
+    };
+  };
+
+  toggleCategory = () => {
+    this.setState({
+      categoryExpanded: !this.state.categoryExpanded
+    });
+  };
+
+  renderCategoryIcon = () => {
+    const imgSrc = INGREDIENT_CATEGORIES[this.props.category.toUpperCase()];
+    return <img src={imgSrc} alt="Image"/>
+  };
+
+  renderShowHideIcon = () => {
+    if (this.state.categoryExpanded) {
+      return <FontAwesome name="minus" />;
+    } else {
+      return <FontAwesome name="plus" />; 
+    }
+  };
+
   render() {
     let ingredients = this.props.ingredients;
     return (
       <div>
-        <div className="notepad-paper">
-          <div className="notepad-category">
+        <div className="sl-category-box">
+          <div className="sl-category-image">
+            <figure className="image is-32x32">
+              {this.renderCategoryIcon()}
+            </figure>
+          </div>
+          <div className="sl-category-title">
             {this.props.category}
           </div>
-          <div className="notepad-lines"></div>
-          <ReactCSSTransitionGroup transitionName="ingredient-mapping" transitionEnterTimeout={300} transitionLeaveTimeout={300} component="ul" className="notepad-list">
-            {Object.keys(ingredients).map(function(key) {
+          <div className="sl-category-toggle" onClick={this.toggleCategory}>
+            {this.renderShowHideIcon()}
+          </div>
+        </div>
+        <CSSTransitionGroup transitionEnterTimeout={500}
+                          transitionLeaveTimeout={500}
+                          transitionName="ingredient">
+          {this.state.categoryExpanded ? 
+            Object.keys(ingredients).map(function(key) {
               return <ShoppingListItem key={ingredients[key]['name']} 
                                        name={ingredients[key]['name']} 
                                        item={ingredients[key]} />
-            })}
-          </ReactCSSTransitionGroup>
-        </div>
+            })
+            : null
+          }
+        </CSSTransitionGroup>
       </div>
     )
   }

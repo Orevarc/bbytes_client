@@ -1,0 +1,232 @@
+$button-shadow-inset: inset 0 1px 2px rgba($bb-black, 0.2) !default;
+@mixin button-small {
+  border-radius: 2px;
+  font-size: $size-small;
+}
+@mixin button-medium {
+  font-size: $size-medium;
+}
+@mixin button-large {
+  font-size: $size-large;
+}
+.button {
+  @include control;
+  background-color: $bb-pure-white;
+  border-color: $bb-grey-light;
+  color: $bb-grey;
+  cursor: pointer;
+  justify-content: center;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  text-align: center;
+  white-space: nowrap;
+
+  strong {
+    color: inherit;
+  }
+
+  .icon {
+    &,
+    &.is-small,
+    &.is-medium,
+    &.is-large {
+      height: 1.5em;
+      width: 1.5em;
+    }
+
+    &:first-child:not(:last-child) {
+      margin-left: calc(-0.375em - 1px);
+      margin-right: 0.1875em;
+    }
+
+    &:last-child:not(:first-child) {
+      margin-left: 0.1875em;
+      margin-right: calc(-0.375em - 1px);
+    }
+
+    &:first-child:last-child {
+      margin-left: calc(-0.375em - 1px);
+      margin-right: calc(-0.375em - 1px);
+    }
+  }
+
+  // States
+  &:hover,
+  &.is-hovered {
+    border-color: $bb-grey-light;
+    color: $bb-grey;
+  }
+
+  &:focus,
+  &.is-focused {
+    border-color: $bb-orange;
+    box-shadow: 0 0 0.5em rgba($bb-orange, 0.25);
+    color: $bb-grey;
+  }
+
+  &:active,
+  &.is-active {
+    border-color: $bb-black;
+    box-shadow: $button-shadow-inset;
+    color: $bb-grey;
+  }
+
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $bb-pure-white: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      border-color: transparent;
+      color: $bb-pure-white;
+
+      &:hover,
+      &.is-hovered {
+        background-color: darken($color, 2.5%);
+        border-color: transparent;
+        color: $bb-pure-white;
+      }
+
+      &:focus,
+      &.is-focused {
+        border-color: transparent;
+        box-shadow: 0 0 0.5em rgba($color, 0.25);
+        color: $bb-pure-white;
+      }
+
+      &:active,
+      &.is-active {
+        background-color: darken($color, 5%);
+        border-color: transparent;
+        box-shadow: $button-shadow-inset;
+        color: $bb-pure-white;
+      }
+
+      &[disabled] {
+        background-color: $color;
+        border-color: transparent;
+        box-shadow: none;
+      }
+
+      &.is-inverted {
+        background-color: $bb-pure-white;
+        color: $color;
+
+        &:hover {
+          background-color: darken($bb-pure-white, 5%);
+        }
+
+        &[disabled] {
+          background-color: $bb-pure-white;
+          border-color: transparent;
+          box-shadow: none;
+          color: $color;
+        }
+      }
+
+      &.is-loading {
+        &:after {
+          border-color: transparent transparent $bb-pure-white $bb-pure-white !important;
+        }
+      }
+
+      &.is-outlined {
+        background-color: transparent;
+        border-color: $color;
+        color: $color;
+
+        &:hover,
+        &:focus {
+          background-color: $color;
+          border-color: $color;
+          color: $bb-pure-white;
+        }
+
+        &.is-loading {
+          &:after {
+            border-color: transparent transparent $color $color !important;
+          }
+        }
+
+        &[disabled] {
+          background-color: transparent;
+          border-color: $color;
+          box-shadow: none;
+          color: $color;
+        }
+      }
+
+      &.is-inverted.is-outlined {
+        background-color: transparent;
+        border-color: $bb-pure-white;
+        color: $bb-pure-white;
+
+        &:hover,
+        &:focus {
+          background-color: $bb-pure-white;
+          color: $color;
+        }
+
+        &[disabled] {
+          background-color: transparent;
+          border-color: $bb-pure-white;
+          box-shadow: none;
+          color: $bb-pure-white;
+        }
+      }
+    }
+  }
+
+  // Sizes
+  &.is-small {
+    @include button-small;
+  }
+
+  &.is-medium {
+    @include button-medium;
+  }
+
+  &.is-large {
+    @include button-large;
+  }
+
+  // Modifiers
+  &[disabled] {
+    background-color: $bb-pure-white;
+    border-color: $bb-grey-light;
+    box-shadow: none;
+    opacity: 0.5;
+  }
+
+  &.is-fullwidth {
+    display: flex;
+    width: 100%;
+  }
+
+  &.is-loading {
+    color: transparent !important;
+    pointer-events: none;
+
+    &:after {
+
+      position: absolute !important;
+    }
+  }
+
+  &.is-static {
+    background-color: hsl(0, 0%, 96%);
+    border-color: $bb-grey-light;
+    color: $bb-grey;
+    box-shadow: none;
+    pointer-events: none;
+  }
+}
+
+// Adjustment for vertical spacing
+button.button,
+input[type="submit"].button {
+  line-height: 1;
+  padding-bottom: 0.4em;
+  padding-top: 0.35em;
+}

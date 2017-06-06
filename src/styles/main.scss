@@ -9,13 +9,13 @@
 @import "theme/content";
 @import "components/notepad";
 @import "components/shoppingList";
-@import "components/ingredientMapping";
 @import "components/recipeInfo";
 @import "theme/sidebar";
 @import "theme/footer";
 
+@import "utils/controls";
 @import "utils/image";
 @import "utils/margins";
-@import "utils/buttons";
+@import "utils/button";
 @import "utils/fields";
 

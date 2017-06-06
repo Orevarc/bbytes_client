@@ -22,7 +22,8 @@ class RecipeInfoContainer extends React.Component {
       recipeMultipliers: this.props.recipes.map(recipe => ({
                             url: recipe.url,
                             multiplier: recipe.multiplier
-                          }))
+                          })),
+      multipliersChanged: false
     }
   }
 
@@ -31,13 +32,33 @@ class RecipeInfoContainer extends React.Component {
                                                                 {...recipe, multiplier: multiplier } : 
                                                                 recipe )
     this.setState({
-      recipeMultipliers: newState
+      recipeMultipliers: newState,
+      multipliersChanged: true
     });
   };
 
   changeRecipesAmount = (e) => {
     e.preventDefault();
     this.props.actions.slChangeRecipesAmount(this.state.recipeMultipliers);
+    this.setState({
+      multipliersChanged: false
+    });
+  };
+
+  renderApplyButton = () => {
+    if (this.state.multipliersChanged) {
+      return (
+        <button onClick={this.changeRecipesAmount} className="button is-medium is-outlined is-info">
+          Apply
+        </button>
+      );
+    } else {
+      return (
+        <button disabled onClick={this.changeRecipesAmount} className="button is-medium is-outlined is-info">
+          Apply
+        </button>
+      );
+    }
   };
 
   render() {
@@ -47,10 +68,7 @@ class RecipeInfoContainer extends React.Component {
       <div>
         <div className="title">
           <h3 className="text-left">Recipes</h3>
-          <button onClick={this.changeRecipesAmount}
-                  className="btn-lg action-button animate green">
-            Apply
-          </button>
+          {this.renderApplyButton()}
         </div>
         <div className="recipe-container">
           {recipes.map(function(recipe) {

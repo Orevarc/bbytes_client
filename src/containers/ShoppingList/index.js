@@ -52,6 +52,22 @@ class ShoppingListView extends React.Component {
         );
     };
 
+    renderPageTitle = () => {
+        if (this.props.inputtingRecipes) {
+            return <h1 className="text-center">BBytes Shopping List</h1>;
+        } else {
+            return (
+                <div className="page-title">
+                    <h1 className="text-left">BBytes Shopping List</h1>
+                    <div className="btn-group">
+                        <MoreRecipesButton />
+                        <RefreshRecipesButton />
+                    </div>
+                </div>
+            );
+        }
+    };
+
     render() {
         let inputtingRecipes = this.props.inputtingRecipes;
         let isFetching = this.props.isFetching;
@@ -63,7 +79,8 @@ class ShoppingListView extends React.Component {
         }
         return (
             <div>
-                <h1 className="text-center">BBytes Shopping List</h1>
+                {this.renderPageTitle()}
+                
                 { inputtingRecipes === true ? (
                     isFetching ? (
                         this.renderLoadingSpinner()
@@ -73,10 +90,6 @@ class ShoppingListView extends React.Component {
                 ) : inputtingRecipes === false ? (
                     forReview.length && ingredients ? (
                         <div>
-                            <div className="btn-group">
-                                <MoreRecipesButton />
-                                <RefreshRecipesButton />
-                            </div>
                             <div className="shopping-list-container">
                                 <div className="recipe-column">
                                     <RecipeInfoContainer />

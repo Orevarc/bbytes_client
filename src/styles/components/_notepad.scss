@@ -6,10 +6,6 @@
   padding: 0;
 }
 
-.notepad-category {
-  border-bottom: 1px double $bb-black;
-  border-top: 1px double $bb-black;
-}
 h4 {
   color: #cd0000;
   font-size: 42px;
@@ -43,6 +39,7 @@ h4 {
 }
 
 .notepad-list .for-review {
+  font-family: 'Quicksand', sans-serif;
   list-style: none;
   border-bottom: 1px dotted #ccc;
   text-indent: 25px;

@@ -80,7 +80,7 @@ class RecipeInput extends React.Component {
             />
             <button disabled={this.props.isFetching}
                     type="submit"
-                    className="btn-lg action-button animate green"
+                    className="button is-large is-outlined is-black"
             >
                 Get Ingredients
             </button>

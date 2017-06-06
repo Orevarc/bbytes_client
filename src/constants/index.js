@@ -41,18 +41,18 @@ export const ING_FETCH_INGREDIENT_CATEGORIES_SUCCESS = 'ING_FETCH_INGREDIENT_CAT
 
 // Ingredients
 export const INGREDIENT_CATEGORIES = {
-	BAKING: 'Baking',
-    BREAD: 'Bread',
-    CANNED: 'Canned',
-    DAIRY: 'Dairy',
-    HERB: 'Herb',
-    FROZEN: 'Frozen',
-    FRUIT: 'Fruit',
-    NUT: 'Nut',
-    MEAT: 'Meat',
-    MISC: 'Misc.',
-    OTHER: 'Other',
-    SEAFOOD: 'Seafood',
-    SPICE: 'Spice',
-    VEGETABLE:'Vegetable'
+	BAKING: 'images/cupcake.svg',
+    BREAD: 'images/bread.svg',
+    CANNED: 'images/canned-food.svg',
+    DAIRY: 'images/dairy.svg',
+    HERB: 'images/herbs.svg',
+    FROZEN: 'images/frozen.svg',
+    FRUIT: 'images/apple.svg',
+    NUT: 'images/peabut.svg',
+    MEAT: 'images/steak.svg',
+    MISC: 'images/groceries.svg',
+    OTHER: 'images/groceries.svg',
+    SEAFOOD: 'images/fish.svg',
+    SPICE: 'images/spice.svg',
+    VEGETABLE: 'images/broccoli.svg'
 }

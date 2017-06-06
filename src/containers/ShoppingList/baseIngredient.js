@@ -45,11 +45,16 @@ class BaseIngredient extends React.Component {
 
   constructor(props) {
     super(props);
+    const categories = {};
+    Object.keys(INGREDIENT_CATEGORIES).reduce((categories, category) => {
+      categories[category] = category.charAt(0) + category.substr(1).toLowerCase();
+      return categories;
+    }, categories);
     this.state = {
       baseIngredientFormOptions: BaseIngredientFormOptions,
       formFields: {
         name: t.String,
-        category: t.enums(INGREDIENT_CATEGORIES)
+        category: t.enums(categories)
       },
       formValues: {
         name: '',

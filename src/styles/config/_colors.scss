@@ -22,9 +22,15 @@ $bb-info:            #5bc0de;
 $bb-warning:         #f0ad4e;
 $bb-danger:          #d9534f;
 
-$bb-white: #F7F2EB;
-$bb-yellow: #FFC53D;
+$bb-pure-white: #FFFFFF;
+$bb-white: #FFFAD5;
+$bb-yellow-primary: #FFD34E;
+$bb-yellow-secondary: #DB9E36;
+$bb-orange: #BD4932;
 $bb-green: #86A17F;
-$bb-salmon: #C37A65;
-$bb-blue: #124357;
+$bb-blue: #105B63;
 $bb-black: #171717;
+$bb-grey: #dddddd;
+$bb-grey-light: #f0f0f0;
+
+$colors: ("white": ($bb-pure-white, $bb-black), "black": ($bb-black, $bb-pure-white), "primary": ($bb-orange, $bb-pure-white), "info": ($bb-blue, $bb-pure-white), "success": ($bb-green, $bb-pure-white)) !default

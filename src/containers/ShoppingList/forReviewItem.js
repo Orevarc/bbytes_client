@@ -55,9 +55,9 @@ class ForReviewItem extends React.Component {
         <div onClick={this.onAddIngredientMappingClick}>
           {item.name}
         </div>
-        <CSSTransitionGroup transitionEnterTimeout={1000}
-                            transitionLeaveTimeout={1000}
-                            transitionName="menu">
+        <CSSTransitionGroup transitionEnterTimeout={500}
+                            transitionLeaveTimeout={500}
+                            transitionName="for-review">
           { ingMapping }
         </CSSTransitionGroup>      
       </div>
