@@ -23,6 +23,7 @@ $bb-warning:         #f0ad4e;
 $bb-danger:          #d9534f;
 
 $bb-pure-white: #FFFFFF;
+$bb-red: #961C09;
 $bb-white: #FFFAD5;
 $bb-yellow-primary: #FFD34E;
 $bb-yellow-secondary: #DB9E36;
@@ -34,4 +35,4 @@ $bb-grey: #dddddd;
 $bb-grey-light: #f0f0f0;
 $bb-grey-lightest: #f5f5f5;
 
-$colors: ("white": ($bb-pure-white, $bb-black), "black": ($bb-black, $bb-pure-white), "primary": ($bb-orange, $bb-pure-white), "info": ($bb-blue, $bb-pure-white), "success": ($bb-green, $bb-pure-white)) !default
+$colors: ("white": ($bb-pure-white, $bb-black), "black": ($bb-black, $bb-pure-white), "primary": ($bb-orange, $bb-pure-white), "info": ($bb-blue, $bb-pure-white), "success": ($bb-green, $bb-pure-white), "warning": ($bb-red, $bb-pure-white)) !default

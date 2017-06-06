@@ -54,7 +54,7 @@ class ShoppingListView extends React.Component {
 
     renderPageTitle = () => {
         if (this.props.inputtingRecipes) {
-            return <h1 className="text-center">BBytes Shopping List</h1>;
+            return <div><h1 className="text-center">BBytes Shopping List</h1></div>;
         } else {
             return (
                 <div className="page-title">

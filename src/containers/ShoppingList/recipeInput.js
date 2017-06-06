@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as actionCreators from '../../actions/shoppingList';
+import MessageBox from '../../components/messageBox';
 
 const Form = t.form.Form;
 
@@ -71,20 +72,23 @@ class RecipeInput extends React.Component {
 
     render() {
       return (
-        <form onSubmit={this.fetchIngredients}>
-            <Form ref={(ref) => { this.recipeInputForm = ref; }}
-                  type={Recipes}
-                  options={RecipeFormOptions}
-                  value={this.state.formValues}
-                  onChange={this.onFormChange}
-            />
-            <button disabled={this.props.isFetching}
-                    type="submit"
-                    className="button is-large is-outlined is-black"
-            >
-                Get Ingredients
-            </button>
-        </form>
+        <div className="recipe-input-container">
+            <MessageBox type="warning" message="Testing an error message!" visible={true}/>
+            <form onSubmit={this.fetchIngredients}>
+                <Form ref={(ref) => { this.recipeInputForm = ref; }}
+                      type={Recipes}
+                      options={RecipeFormOptions}
+                      value={this.state.formValues}
+                      onChange={this.onFormChange}
+                />
+                <button disabled={this.props.isFetching}
+                        type="submit"
+                        className="button is-large is-outlined is-black"
+                >
+                    Get Ingredients
+                </button>
+            </form>
+        </div>
       )
     }
 }
