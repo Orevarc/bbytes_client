@@ -57,16 +57,16 @@ export function slReceiveIngredientsSuccess(data) {
         type: SL_FETCH_INGREDIENTS_SUCCESS,
         payload: {
             'shoppingList': data.shopping_list,
+            'reviewList': data.review_list,
             'recipes': data.recipes
         }
     };
 }
 
-export function slReceiveIngredientsFailure(statusCode, errors) {
+export function slReceiveIngredientsFailure(errors) {
     return {
         type: SL_FETCH_INGREDIENTS_FAILURE,
         payload: {
-            statusCode: statusCode,
             errors: errors
         }
     };
@@ -102,10 +102,10 @@ export function slFetchIngredients(urls) {
             })
             .catch((error) => {
                 console.log(error)
-                if (error && typeof error.response !== 'undefined' && error.response.status === 401) {
+                if (error && typeof error.response !== 'undefined' && error.response.status === 400) {
                     // Invalid authentication credentials
                     return error.response.json().then((data) => {
-                        dispatch(slReceiveIngredientsFailure(401, data.non_field_errors[0]));
+                        dispatch(slReceiveIngredientsFailure(data));
                     });
                 } else if (error && typeof error.response !== 'undefined' && error.response.status >= 500) {
                     // Server side error

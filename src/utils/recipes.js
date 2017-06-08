@@ -1,3 +1,8 @@
+export function removeRecipe(shoppingList, url) {
+	
+}
+
+
 export function bulkChangeRecipeIngredientAmounts(shoppingList, recipes, recipeMultipliers) {
 	for (let recipeMultiplier of recipeMultipliers) {
 		const url = recipeMultiplier.url;

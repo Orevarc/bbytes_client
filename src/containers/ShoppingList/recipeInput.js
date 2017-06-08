@@ -41,6 +41,7 @@ const RecipeFormOptions = {
 class RecipeInput extends React.Component {
 
     static propTypes = {
+        errors: React.PropTypes.any,
         recipeUrls: React.PropTypes.string.isRequired,
         statusText: React.PropTypes.string,
         actions: React.PropTypes.shape({
@@ -73,7 +74,7 @@ class RecipeInput extends React.Component {
     render() {
       return (
         <div className="recipe-input-container">
-            <MessageBox type="warning" message="Testing an error message!" visible={true}/>
+            { this.props.errors ? <MessageBox type="warning" message={this.props.errors[0].message} visible={true}/> : null}
             <form onSubmit={this.fetchIngredients}>
                 <Form ref={(ref) => { this.recipeInputForm = ref; }}
                       type={Recipes}
@@ -95,6 +96,7 @@ class RecipeInput extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        errors: state.shoppingList.errors,
         recipeUrls: state.shoppingList.recipeUrls,
         statusText: state.shoppingList.statusText,
     };

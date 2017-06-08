@@ -9,6 +9,7 @@ import {
 
 
 const initialState = {
+    errors: null,
     recipeUrls: '',
     recipes: [],
     baseIngredients: [],
@@ -51,14 +52,15 @@ export default createReducer(initialState, {
         return Object.assign({}, state, {
             isFetching: false,
             inputtingRecipes: false,
-            shoppingList: payload.shoppingList.item_list,
-            forReview: payload.shoppingList.for_review,
+            shoppingList: payload.shoppingList,
+            forReview: payload.reviewList,
             recipes: payload.recipes,
             statusText: 'Shopping List success'
         });
     },
     [SL_FETCH_INGREDIENTS_FAILURE]: (state, payload) => {
         return Object.assign({}, state, {
+            errors: payload.errors,
             isFetching: false,
             recipeUrls: [],
             recipes: [],
