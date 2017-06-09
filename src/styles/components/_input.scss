@@ -15,6 +15,18 @@
         margin-bottom: 10px;
     }
 }
+
+@media screen {
+    .recipe-input-container {
+        & form {
+            width: 100%;
+        }
+        .recipe-input {
+            height: 200px;
+        }
+    }
+}
+
 .recipe-input {
   position: relative;
   height: 390px;
