@@ -6,6 +6,18 @@
 	align-items: flex-start;
 }
 
+@media screen and (max-width:1000px) {
+    .shopping-list-container {
+        flex-direction: column;
+
+        .for-review-column,
+        .list-column,
+        .recipe-column {
+            width: 100%;
+        }
+    }
+}
+
 
 .sl-category-box {
 	font-family: 'Quicksand', sans-serif;
@@ -72,9 +84,6 @@
   overflow: hidden;
   max-height: 0px;
 }
-.recipe-column {
-	width: 24%;
-}
 .for-review-column,
 .list-column {
 	width: 38%;
@@ -87,7 +96,13 @@
 	padding-right: 10px;
 }
 
+.list-column,
 .recipe-column {
+    flex-grow: 1;
+}
+
+.recipe-column {
+    width: 24%;
 	.title {
 		display: flex;
 		justify-content: space-between;
