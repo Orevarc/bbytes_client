@@ -7,14 +7,33 @@ class ShoppingListItem extends React.Component {
     item: React.PropTypes.shape().isRequired,
   };
 
+  renderItem = () => {
+    let name = this.props.name;
+    let amount = parseFloat(this.props.item.amount).toFixed(2);
+    let unit = this.props.item.unit;
+    let category = this.props.item.category;
+    var item;
+    if (category === 'MISC') {
+      item = <div className="ingredient">{name}</div>;
+    }
+    else {
+      
+      item = <div className="ingredient">{name}: {amount} <span className="unit">{unit}</span></div>;
+    }
+    return item;
+
+  };
+
   render() {
     let name = this.props.name;
     let amount = parseFloat(this.props.item.amount).toFixed(2);
     let unit = this.props.item.unit;
     let category = this.props.item.category;
+    var unitHtml = <span className="unit">{unit}</span>;
     return (
       <div className="ingredient">
-        {name}: {amount} <span className="unit">{unit}</span>
+        {name}
+        {category != 'MISC' ? [': ',amount,' ',unitHtml] : null}
       </div>
     )
   }

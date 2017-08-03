@@ -30,7 +30,7 @@ class IngredientMapping extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.actions.ingFetchBaseIngredients();
+    this.props.actions.ingFetchBaseIngredients();
   }
 
   addNewBaseIngredient = () => {
