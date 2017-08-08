@@ -54,24 +54,11 @@ class App extends React.Component {
         return (
             <div className="app">
                <header>
-                <div className="row">
-
                     <div className="logo">
-                         <a href="/">BBytes</a>
-                  </div>
-
-                    <nav id="main-nav-wrap">
-                        <ul className="main-navigation">
-                            <li><Link to="/shopping_list">Shopping List</Link></li>
-                            <li><Link to="/register">Register</Link></li>
-                            <li><Link to="/login">Login</Link></li>
-                        </ul>
-                    </nav>
-
-                    <a className="menu-toggle" href="#"><span>Menu</span></a>
-                    
-                </div>      
-                
+                         <a href="/">
+                            <img src="images/groceries.svg"/>
+                         </a>
+                    </div>               
                </header>
                 <section id="intro">
                     <div className="intro-content">
