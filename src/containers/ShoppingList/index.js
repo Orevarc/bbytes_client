@@ -21,7 +21,11 @@ class ShoppingListView extends React.Component {
         forReview: React.PropTypes.array,
         inputtingRecipes: React.PropTypes.bool.isRequired,
         isFetching: React.PropTypes.bool.isRequired,
-        statusText: React.PropTypes.string,
+        notification: React.PropTypes.shape({
+            visible: React.PropTypes.bool,
+            message: React.PropTypes.string,
+            type: React.PropTypes.string
+        }),
         actions: React.PropTypes.shape({
             slFetchIngredients: React.PropTypes.func.isRequired
         })
@@ -113,7 +117,7 @@ class ShoppingListView extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        statusText: state.shoppingList.statusText,
+        notification: state.shoppingList.notification,
         shoppingList: state.shoppingList.shoppingList,
         forReview: state.shoppingList.forReview,
         isFetching: state.shoppingList.isFetching,
