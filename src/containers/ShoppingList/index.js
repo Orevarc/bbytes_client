@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import NotificationSystem from 'react-notification-system';
 import React from 'react';
 import t from 'tcomb-form';
 
@@ -22,7 +22,7 @@ class ShoppingListView extends React.Component {
         inputtingRecipes: React.PropTypes.bool.isRequired,
         isFetching: React.PropTypes.bool.isRequired,
         notification: React.PropTypes.shape({
-            visible: React.PropTypes.bool,
+            title: React.PropTypes.string,
             message: React.PropTypes.string,
             type: React.PropTypes.string
         }),
@@ -37,6 +37,22 @@ class ShoppingListView extends React.Component {
         this.state = {
             inputtingRecipes: true,
         };
+        this._notificationSystem = null;
+    }
+
+    componentDidMount () {
+        this._notificationSystem = this.refs.notificationSystem;
+    }
+
+    displayNotification() {
+        if (this.props.notification) {
+            this._notificationSystem.addNotification({
+                title: this.props.notification.title,
+                message: this.props.notification.message,
+                level: this.props.notification.type,
+                position: 'br',
+            });
+        }
     }
 
     renderLoadingSpinner() {
@@ -77,6 +93,7 @@ class ShoppingListView extends React.Component {
         let isFetching = this.props.isFetching;
         var ingredients = null;
         var forReview = null;
+        this.displayNotification()
         if (this.props.shoppingList) {
             ingredients = this.props.shoppingList;
             forReview = this.props.forReview;
@@ -110,6 +127,7 @@ class ShoppingListView extends React.Component {
                         <ShoppingList allIngredients={ingredients} />
                     ) : null
                 ) : null }
+                <NotificationSystem ref="notificationSystem" />
             </div>
         );
     }
