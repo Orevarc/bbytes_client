@@ -14,6 +14,8 @@ import {
     ING_POST_INGREDIENT_MAPPING_FAILURE
 } from '../constants';
 
+import { displayNotification } from './global';
+
 // Fetching Base Ingredients
 export function ingFetchBaseIngredientsRequest() {
     return {
@@ -121,6 +123,7 @@ export function ingPostBaseIngredient(name, category) {
             .then((response) => {
                 dispatch(ingPostBaseIngredientSuccess(response));
                 dispatch(ingFetchBaseIngredients());
+                dispatch(displayNotification('Success', 'Ingredient sucessfully added', 'success'));
             })
             .catch((error) => {
                 console.log(error)
@@ -186,6 +189,7 @@ export function ingPostIngredientMapping(ingredientMapping) {
             .then(parseJSON)
             .then((response) => {
                 dispatch(ingPostIngredientMappingSuccess(response));
+                dispatch(displayNotification('Success', 'Ingredient sucessfully mapped', 'success'));
             })
             .catch((error) => {
                 console.log(error)

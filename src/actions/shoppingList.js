@@ -10,6 +10,7 @@ import {
     SL_FETCH_INGREDIENTS_SUCCESS
 } from '../constants';
 
+import { displayNotification } from './global';
 import { bulkChangeRecipeIngredientAmounts } from '../utils/recipes';
 
 function getCookie(name) {
@@ -41,6 +42,7 @@ export function slChangeRecipesAmount(recipeMultipliers) {
         let shoppingList = state().shoppingList.shoppingList;
         const recipes = state().shoppingList.recipes;
         shoppingList = bulkChangeRecipeIngredientAmounts(shoppingList, recipes, recipeMultipliers);
+        dispatch(displayNotification('Success', 'Recipe amounts successfully changed', 'success'));
         return dispatch({
             type: SL_CHANGE_RECIPES_AMOUNT,
             payload: {
@@ -99,6 +101,7 @@ export function slFetchIngredients(urls) {
             .then(parseJSON)
             .then((response) => {
                 dispatch(slReceiveIngredientsSuccess(response));
+                dispatch(displayNotification('Success', 'Shopping list generated', 'success'));
             })
             .catch((error) => {
                 console.log(error)

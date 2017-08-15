@@ -23,6 +23,7 @@ class ShoppingListView extends React.Component {
         isFetching: React.PropTypes.bool.isRequired,
         notification: React.PropTypes.shape({
             title: React.PropTypes.string,
+            visible: React.PropTypes.bool,
             message: React.PropTypes.string,
             type: React.PropTypes.string
         }),

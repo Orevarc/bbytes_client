@@ -17,7 +17,6 @@ const initialState = {
     shoppingList: null,
     isFetching: false,
     inputtingRecipes: true,
-    notification: null,
 };
 
 export default createReducer(initialState, {
@@ -45,7 +44,6 @@ export default createReducer(initialState, {
             inputtingRecipes: true,
             shoppingList: null,
             forReview: null,
-            notification: null
         });
     },
     [SL_FETCH_INGREDIENTS_SUCCESS]: (state, payload) => {
@@ -55,11 +53,6 @@ export default createReducer(initialState, {
             shoppingList: payload.shoppingList,
             forReview: payload.reviewList,
             recipes: payload.recipes,
-            notification: {
-                title: 'Success',
-                message: 'Shopping list generated',
-                type: 'success'
-            }
         });
     },
     [SL_FETCH_INGREDIENTS_FAILURE]: (state, payload) => {
@@ -71,11 +64,6 @@ export default createReducer(initialState, {
             inputtingRecipes: true,
             shoppingList: null,
             forReview: null,
-            notification: {
-                title: 'Error',
-                message: payload.errors[0].message,
-                type: 'error'
-            }
         });
     },
 });
