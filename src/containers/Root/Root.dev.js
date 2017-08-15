@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
 import routes from '../../routes';
-import DevTools from './DevTools';
 
 export default class Root extends React.Component {
 
@@ -20,7 +19,6 @@ export default class Root extends React.Component {
                         <Router history={this.props.history}>
                             {routes}
                         </Router>
-                        <DevTools/>
                     </div>
                 </Provider>
             </div>

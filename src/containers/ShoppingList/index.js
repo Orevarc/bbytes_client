@@ -125,7 +125,16 @@ class ShoppingListView extends React.Component {
                             </div>
                         </div>
                     ) : ingredients ? (
-                        <ShoppingList allIngredients={ingredients} />
+                        <div>
+                            <div className="shopping-list-container">
+                                <div className="recipe-column">
+                                    <RecipeInfoContainer />
+                                </div>
+                                <div className="list-column">
+                                    <ShoppingList allIngredients={ingredients} />
+                                </div>
+                            </div>
+                        </div>
                     ) : null
                 ) : null }
                 <NotificationSystem ref="notificationSystem" />

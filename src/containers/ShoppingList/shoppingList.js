@@ -26,7 +26,7 @@ class ShoppingList extends React.Component {
       <div>
         <h3 className="text-center">Shopping List</h3>
           <ul className="notepad-list">
-          {Object.keys(sortedIngredients).map(function(key) {
+          {Object.keys(sortedIngredients).sort().map(function(key) {
             return <ShoppingListSection key={key} category={key} ingredients={sortedIngredients[key]} />
           })}
           </ul>

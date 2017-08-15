@@ -40,6 +40,7 @@ class ShoppingListSection extends React.Component {
 
   render() {
     let ingredients = this.props.ingredients;
+    console.log(ingredients)
     return (
       <div>
         <div className="sl-category-box">
@@ -59,7 +60,7 @@ class ShoppingListSection extends React.Component {
                           transitionLeaveTimeout={500}
                           transitionName="ingredient">
           {this.state.categoryExpanded ? 
-            Object.keys(ingredients).map(function(key) {
+            Object.keys(ingredients).sort().map(function(key) {
               return <ShoppingListItem key={ingredients[key]['name']} 
                                        name={ingredients[key]['name']} 
                                        item={ingredients[key]} />

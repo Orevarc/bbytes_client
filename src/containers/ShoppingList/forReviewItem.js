@@ -53,7 +53,7 @@ class ForReviewItem extends React.Component {
     return (
       <div className="for-review-box">
         <div className="for-review-title" onClick={this.onAddIngredientMappingClick}>
-          {item.name}
+          {item.full_ingredient} -- ({item.name})
         </div>
         <CSSTransitionGroup transitionEnterTimeout={500}
                             transitionLeaveTimeout={500}

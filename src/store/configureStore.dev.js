@@ -6,7 +6,6 @@ import createLogger from 'redux-logger';
 import { routerMiddleware } from 'react-router-redux';
 
 import rootReducer from '../reducers';
-import DevTools from '../containers/Root/DevTools';
 
 export default function configureStore(initialState, history) {
     const logger = createLogger();

@@ -19,7 +19,7 @@ import { GLOBAL_APP_NAME, GLOBAL_DESCRIP } from './constants'
 class App extends React.Component {
 
     static propTypes = {
-        dispatch: React.PropTypes.func.isRequired,
+        dispatch: React.PropTypes.func,
         notification: React.PropTypes.shape({
             title: React.PropTypes.string,
             message: React.PropTypes.string,
@@ -94,8 +94,8 @@ class App extends React.Component {
                     <div className="intro-content">
                         <div>
                             {this.props.children}
-                            <NotificationSystem ref="notificationSystem" />
                         </div>
+                        <NotificationSystem ref="notificationSystem" />
                     </div>
                 </section>
             </div>
