@@ -39,7 +39,7 @@ class ShoppingListSection extends React.Component {
   };
 
   render() {
-    let ingredients = this.props.ingredients;
+    let ingredients = _.orderBy(this.props.ingredients, ['name'], ['asc']);
     console.log(ingredients)
     return (
       <div>
@@ -60,7 +60,7 @@ class ShoppingListSection extends React.Component {
                           transitionLeaveTimeout={500}
                           transitionName="ingredient">
           {this.state.categoryExpanded ? 
-            Object.keys(ingredients).sort().map(function(key) {
+            Object.keys(ingredients).map(function(key) {
               return <ShoppingListItem key={ingredients[key]['name']} 
                                        name={ingredients[key]['name']} 
                                        item={ingredients[key]} />
