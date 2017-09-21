@@ -40,7 +40,6 @@ class ShoppingListSection extends React.Component {
 
   render() {
     let ingredients = _.orderBy(this.props.ingredients, ['name'], ['asc']);
-    console.log(ingredients)
     return (
       <div>
         <div className="sl-category-box">

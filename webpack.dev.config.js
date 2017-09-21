@@ -7,7 +7,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const TARGET = process.env.NODE_ENV;
-console.log(TARGET);
 
 module.exports = {
   devtool: 'source-map',
